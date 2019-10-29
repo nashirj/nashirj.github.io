@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page not found</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet" type="text/css">
+  <link href="../css/default.css" rel="stylesheet">
+</head>
+
+<center>
+  
+<a href="default.htm">
+  <img src="../images/header.jpg" width="40%" alt="Quintessence-Logo" style="padding-top: 2em"/> <!-- style="padding: 20px -->
+</a>
+
+<p></p>
+
+<ul>
+  <li><a href="../default.htm">HOME</a></li>
+  <li><a href="projects.htm">PROJECTS</a></li>
+  <li><a href="outreach.htm">OUTREACH</a></li>
+  <li><a href="gallery.htm">GALLERY</a></li>
+  <li><a href="team.htm">TEAM</a></li>
+  <li><a href="sponsors.htm">SPONSORS</a></li>
+  <li><a href="contact.htm">CONTACT</a></li>
+
+</ul>
+
+  <h2>
+    The page you are looking for doesn't exist!
+  </h2>
+  <h4>
+    Would you like to return to Quintessence's <a href="../default.htm">homepage</a>?
+  </h4>
+</center>
+</body>
+
+
+</html>

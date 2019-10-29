@@ -1,4 +1,0 @@
-#Alternate default index page
-DirectoryIndex default.htm
-ErrorDocument 404 http://www.nashirj.com/error.htm
-

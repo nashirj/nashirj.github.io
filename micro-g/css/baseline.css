@@ -1,0 +1,42 @@
+body {
+  background-color: white;
+  color: black;
+  font-family: 'proxima-nova', sans-serif;
+}
+h1 {
+  font-size: 60px;
+  color: black;
+}
+
+a {
+  color: black;
+}  /* static */
+a:hover {
+  color: grey;
+}
+
+ul {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: white;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: grey;
+  text-align: center;
+  padding: 14px 16px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+li a:hover {
+  color: grey;
+}
