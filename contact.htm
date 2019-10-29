@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html>
+<head>
+  <title>Contact</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet" type="text/css">
+  <link href="css/contact-styles.css" rel="stylesheet">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145045736-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-145045736-1');
+  </script>
+</head>
+
+<center>
+  <ul>
+    <li><a href="default.htm">Home</a></li>
+    <li><a href="about.htm">About</a></li>
+    <li><a href="projects.htm">Projects</a></li>
+    <li><a href="calendar.htm">Calendar</a></li>
+    <li><a href="services.htm">Services</a></li>
+    <li><a>Contact</a></li>
+  </ul>
+
+  <body>
+    <div style="line-height:0.9em">
+      <h1>Contact Nashir</h1>
+    </div>
+
+    <div style="line-height:1.1em">
+      <p>email: nashirj@icloud.com</p>
+    </div>
+
+    <main>
+      <form class="contact-form" action="php/contactform.php" method="post">
+        <input type="text" name="name" placeholder="Full name" required>
+        <input type="text" name="mailFrom" placeholder="Your e-mail" required>
+        <input type="text" name="subject" placeholder="Subject">
+        <textarea name="message" placeholder="Message" required></textarea>
+        <h6 class="misc">Do not fill this text box:<input type="text" name="url" /></h6>
+        <button type="submit" name="submit">Submit</button>
+      </form>
+    </main>
+  </body>
+</center>
+
+</html>

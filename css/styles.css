@@ -1,0 +1,55 @@
+  body {
+    background-color: white;
+    color: black;
+    font-family: Alegreya;
+  }
+  h1 {
+    font-size: 60px;
+    color: dodgerblue;
+    line-height: 0.9em;
+  }
+
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+  a {
+    color: black;
+  }  /* static */
+  a:hover {
+    color: blue;
+  }  /* mouse over link */
+
+/* NEED TO SHED THIS AND UNDERSTAND IT */
+  ul {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+  }
+
+  li {
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    color: #40F9FF;
+  }
+
+  .blurb td, .blurb th {padding-top:2em; padding-bottom:2em; vertical-align:top;}
+  .blurb th {padding-right:1rem; padding-left:12em}

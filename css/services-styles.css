@@ -1,0 +1,50 @@
+  body {
+    background-color: white;
+    color: black;
+    font-family: Alegreya;
+  }
+  h1 {
+    font-size: 60px;
+    color: dodgerblue;
+    line-height: 0.9em;
+  }
+
+  p {
+    font-size: 20px;
+    margin-right: 100px;
+    margin-left: 100px;
+    text-align: justify;
+  }
+
+  a {
+    color: black;
+  }  /* static */
+  a:hover {
+    color: blue;
+  }  /* mouse over link */
+
+/* NEED TO SHED THIS AND UNDERSTAND IT */
+  ul {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+  }
+
+  li {
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    color: #40F9FF;
+  }
