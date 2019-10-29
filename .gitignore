@@ -1,12 +1,5 @@
 **/admin
 
-*.pdf
-
-*.jpg
-
-*.png
-
 .DS_Store
 
-**/audio
 ._*
