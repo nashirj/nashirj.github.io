@@ -1,4 +1,2 @@
 # micro-g-website
-Website for outreach and promotion of Micro-G Design Challenge
-
-<a href="quintessence.technology">website link</a>
+Website for outreach and promotion of Quintessence's participation in the Micro-G NExT Design Challenge
