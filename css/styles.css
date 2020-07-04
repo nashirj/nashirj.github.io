@@ -1,3 +1,9 @@
+:root {
+  --main-bg-color: coral;
+  --nav-border-color: #f5dc62;
+  --main-link-color: #40F9FF;
+}
+
   body {
     background-color: white;
     color: black;
@@ -22,11 +28,11 @@
     color: black;
   }  /* static */
   a:hover {
-    color: blue;
+    color: var(--main-link-color);
   }  /* mouse over link */
 
 /* NEED TO SHED THIS AND UNDERSTAND IT */
-  ul {
+/*  ul {
     display: inline-block;
     list-style-type: none;
     margin: 0;
@@ -37,19 +43,33 @@
 
   li {
     float: left;
-  }
+  }*/
 
   li a {
     display: block;
-    color: black;
+    color: var(--main-link-color);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
   }
 
-  li a:hover {
-    color: #40F9FF;
-  }
-
   .blurb td, .blurb th {padding-top:2em; padding-bottom:2em; vertical-align:top;}
   .blurb th {padding-right:1rem; padding-left:12em}
+
+  .bg-header {
+    background-color: #10275e;
+  }
+
+  .nav-border {
+    border-bottom:4px solid var(--nav-border-color);
+    padding-bottom:10px;
+  }
+
+  .home-text a {
+    color: var(--nav-border-color);
+    text-decoration: none;
+  }
+
+  .active a {
+    color: #e66c5c;
+  }
