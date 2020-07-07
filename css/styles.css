@@ -1,5 +1,5 @@
 :root {
-  --main-bg-color: coral;
+  --main-bg-color: #feffe8;
   --nav-border-color: #f5dc62;
   --main-link-color: #40F9FF;
 }
@@ -7,7 +7,7 @@
   body {
     background-color: white;
     color: black;
-    font-family: Alegreya;
+    font-family: monospace, monospace;
   }
   h1 {
     font-size: 60px;
@@ -41,16 +41,27 @@
     background-color: white;
   }
 
+*/
   li {
+    padding: 14px 16px;
     float: left;
-  }*/
+  }
 
   li a {
     display: block;
     color: var(--main-link-color);
     text-align: center;
-    padding: 14px 16px;
+    /*padding: 14px 16px;*/
+    font-size: 20px;
     text-decoration: none;
+  }
+
+  li a:active {
+    color: var(--nav-border-color);
+  }
+
+  li a:hover {
+    opacity: 0.7;
   }
 
   .blurb td, .blurb th {padding-top:2em; padding-bottom:2em; vertical-align:top;}
@@ -66,10 +77,57 @@
   }
 
   .home-text a {
+    display: block;
     color: var(--nav-border-color);
+    text-align: left;
+    padding: 14px 16px;
     text-decoration: none;
   }
 
-  .active a {
-    color: #e66c5c;
+  .home-text a:hover {
+    opacity: 0.7;
+  }
+  
+  .fa {
+    padding: 15px;
+    font-size: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 25%;
+  }
+
+  .fa:hover {
+    opacity: 0.7;
+    text-decoration: none;
+  }
+
+
+  .fa-linkedin {
+    background: #007bb5;
+    color: white;
+  }
+
+  .fa-youtube {
+    background: #bb0000;
+    color: white;
+  }
+
+  .fa-instagram {
+    background: #125688;
+    color: white;
+  }
+
+  .fa-reddit {
+    background: #ff5700;
+    color: white;
+  }
+
+  .fa-github {
+  background: black;
+  color: white;
+  }
+
+  body {
+    background-color: var(--main-bg-color);
   }
