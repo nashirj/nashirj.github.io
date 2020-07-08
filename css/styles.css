@@ -1,18 +1,27 @@
 :root {
   --main-bg-color: #feffe8;
   --nav-border-color: #f5dc62;
-  --main-link-color: #40F9FF;
+  --navbar-link-color: #40F9FF;
+  --body-link-color: #ff5700;
 }
 
   body {
     background-color: white;
     color: black;
-    font-family: monospace, monospace;
+    font-family: Alegreya;
   }
   h1 {
     font-size: 60px;
     color: dodgerblue;
     line-height: 0.9em;
+    padding-top: 0.5em;
+  }
+
+  h2 {
+    font-size: 40px;
+    color: #0398fc;
+    line-height: 0.9em;
+    padding-top: 0.9em;
   }
 
   img {
@@ -21,15 +30,15 @@
   }
 
   p {
-    font-size: 20px;
+    font-size: 25px;
   }
 
   a {
-    color: black;
-  }  /* static */
+    color: var(--body-link-color);
+  }
   a:hover {
-    color: var(--main-link-color);
-  }  /* mouse over link */
+    opacity: 0.7;
+  }
 
 /* NEED TO SHED THIS AND UNDERSTAND IT */
 /*  ul {
@@ -40,8 +49,8 @@
     overflow: hidden;
     background-color: white;
   }
-
 */
+
   li {
     padding: 14px 16px;
     float: left;
@@ -49,15 +58,15 @@
 
   li a {
     display: block;
-    color: var(--main-link-color);
+    color: var(--navbar-link-color);
     text-align: center;
     /*padding: 14px 16px;*/
-    font-size: 20px;
+    font-size: 25px;
     text-decoration: none;
   }
 
   li a:active {
-    color: var(--nav-border-color);
+    color: var(--navbar-link-color);
   }
 
   li a:hover {
@@ -77,6 +86,7 @@
   }
 
   .home-text a {
+    font-size: 25px;
     display: block;
     color: var(--nav-border-color);
     text-align: left;
@@ -128,6 +138,23 @@
   color: white;
   }
 
+  .main-text p {
+    text-align: justify;
+    padding-left: 5em;
+    padding-right: 5em;
+  }
+
   body {
     background-color: var(--main-bg-color);
+  }
+
+  .iframe-container {
+    display: block;
+    overflow: auto;
+  }
+   
+  .iframe-container iframe {
+    height: 100%;
+    border: 0;
+    /*width: 75% !important;*/
   }
