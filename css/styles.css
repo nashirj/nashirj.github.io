@@ -33,6 +33,15 @@ hr {
     padding-top: 0.9em;
   }
 
+
+  h3 {
+    font-size: 30px;
+    color: #0398fc;
+    line-height: 0.9em;
+    padding-top: 0.9em;
+  }
+
+
   img {
     height: auto;
     max-width: 100%;
