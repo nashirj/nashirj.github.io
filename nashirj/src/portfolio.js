@@ -59,6 +59,76 @@ const homeBio = {
   ],
 };
 
+// Technical Page
+const technicalProjects = [
+  {
+    id: "ridesio",
+    title: "Ridesio",
+    image: "/pictures/ridesio.jpg",
+    imageAlt: "Ridesio app screenshot",
+  },
+  {
+    id: "discretemath",
+    title: "discretemath",
+    image: "/pictures/dmgui.png",
+    imageAlt: "discretemath GUI",
+  },
+  {
+    id: "smc-robotics",
+    title: "Santa Monica College Robotics Club",
+    image: "/pictures/robots.jpg",
+    imageAlt: "SMC Robotics Club VEX robot",
+  },
+  {
+    id: "med3d",
+    title: "Med3D (LA Hacks 2020)",
+    videoEmbedId: "fnNXSTg8DJc",
+  },
+  {
+    id: "vulcanet",
+    title: "Vulcanet (SD Hacks 2019)",
+  },
+  {
+    id: "rust-rsa",
+    title: "Rust RSA",
+  },
+];
+
+const technicalLinks = {
+  ridesio: "https://www.ridesio.com/",
+  ridesioAward:
+    "https://blog.codepath.org/2020-codepath-org-fall-semester-demo-day-ios-winners-announced/?utm_content=149195058&utm_medium=social&utm_source=linkedin&hss_channel=lcp-18305024",
+  discretemathRepo: "https://github.com/nashirj/discrete-math-algorithms",
+  discretemathNotebook:
+    "https://github.com/nashirj/discrete-math-algorithms/blob/master/demo.ipynb",
+  smcRoboticsTeam: "https://smcrobotics.github.io",
+  smcRoboticsScript:
+    "https://github.com/nashirj/create-vex-controller-documentation",
+  med3d: "https://devpost.com/software/med3d",
+  thingiverse: "https://www.thingiverse.com/",
+  coronavirusValves:
+    "https://www.theverge.com/2020/3/17/21184308/coronavirus-italy-medical-3d-print-valves-treatments",
+  vulcanet: "https://devpost.com/software/vulcanet-wildfire-detection-network",
+  rustRsa: "https://github.com/DarthGeek01/Rust-RSA",
+  rsaWiki: "https://en.wikipedia.org/wiki/RSA_(cryptosystem)#Operation",
+  chiSquared: "https://en.wikipedia.org/wiki/Chi-squared_test",
+  otherProjects: "https://github.com/nashirj",
+};
+
+const technicalPapers = {
+  clamp: "/pdfs/NASA_Micro_G_NExT_Quintessence_CLaMP.pdf",
+  ntrsPendulumModeling: "https://ntrs.nasa.gov/citations/20205004568",
+  ntrsPendulumControl: "https://ntrs.nasa.gov/citations/20205009993",
+  ntrsRassor: "https://ntrs.nasa.gov/citations/20210020239",
+};
+
+const microGNext = {
+  image: "/quintessence-images/team-5.jpg",
+  imageAlt: "Quintessence team at NASA Johnson Space Center",
+  jsc: "https://www.nasa.gov/centers/johnson/about/index.html",
+  nbl: "https://www.nasa.gov/image-feature/neutral-buoyancy-laboratory",
+};
+
 const socialMediaLinks = [
   {
     name: "Github",
@@ -527,6 +597,10 @@ export {
   seo,
   greeting,
   homeBio,
+  technicalProjects,
+  technicalLinks,
+  technicalPapers,
+  microGNext,
   socialMediaLinks,
   competitiveSites,
   degrees,
