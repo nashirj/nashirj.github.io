@@ -1,0 +1,126 @@
+.music-main {
+  width: 90%;
+  max-width: 1200px;
+  padding: 20px 10px;
+  margin: 0px auto;
+  margin-top: 4rem;
+}
+
+.music-title {
+  font-size: 50px;
+  line-height: 1.1;
+  margin-top: 0;
+  text-align: center;
+}
+
+.music-section {
+  margin-top: 3rem;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.music-section p {
+  margin-bottom: 1.2rem;
+}
+
+.music-video-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.music-video-card {
+  flex: 1 1 calc(50% - 2rem);
+  min-width: 280px;
+}
+
+.music-video-caption {
+  text-align: center;
+}
+
+.music-video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.music-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  border: none;
+}
+
+.music-recording-row {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.music-recording-row audio {
+  width: 100%;
+  max-width: 400px;
+}
+
+.music-members-list {
+  padding-left: 1.2rem;
+}
+
+.music-members-list li {
+  margin-bottom: 0.4rem;
+}
+
+.music-transcriptions-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.music-transcriptions-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.music-transcriptions-artist {
+  flex: 0 0 200px;
+}
+
+.music-transcriptions-tracks {
+  flex: 1 1 auto;
+}
+
+.music-poster-image {
+  max-width: 100%;
+  width: 400px;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Media Query */
+@media (max-width: 768px) {
+  .music-title {
+    font-size: 32px;
+  }
+
+  .music-section {
+    font-size: 16px;
+  }
+
+  .music-video-card {
+    flex: 1 1 100%;
+  }
+
+  .music-transcriptions-row {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .music-transcriptions-artist {
+    flex: none;
+  }
+}

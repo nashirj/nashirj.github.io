@@ -140,6 +140,254 @@ const quintessence = {
   contactEmail: "quintessence.space@gmail.com",
 };
 
+// Music Page
+const musicGroups = [
+  {
+    id: "septessence",
+    name: "Septessence",
+    subtitle: "an Orlando, FL–based jazz septet",
+  },
+  {
+    id: "impulse-trio",
+    name: "The Impulse Trio",
+    subtitle: "an Orlando, FL–based jazz trio",
+  },
+  {
+    id: "madi",
+    name: "Madi and the razz",
+    subtitle: "a pop/funk group",
+    link: "https://www.instagram.com/madiandtherazz/",
+  },
+];
+
+const musicPerformances = [
+  {
+    title: "Fuji",
+    composer: "Samantha Boshnack",
+    venue: "Live at Roth Hall (Crossroads), 2018",
+    embedId: "VcUOc1hzI2Y",
+  },
+  {
+    title: "Mark VI",
+    composer: "David Quested",
+    venue: "Live at UCLA's Music Library, 2017",
+    embedId: "q8QJHFPw2Bk",
+  },
+];
+
+const recordings = [
+  {
+    title: "I Can't Get Started",
+    composer: "Ira Gershwin and Vernon Duke",
+    personnel: "with Devin Daniels and Conor Malloy",
+    audio: "/audio/cant-get-started.mp3",
+  },
+  {
+    title: "Serendipity",
+    composer: "Nashir Janmohamed",
+    personnel: "performance and production by Nashir",
+    audio: "/audio/serendipity.mp3",
+  },
+  {
+    title: "All of You",
+    composer: "Cole Porter",
+    personnel: "with Devin Daniels and Conor Malloy",
+    audio: "/audio/all-of-you.mp3",
+  },
+  {
+    title: "Had to See",
+    composer: "Nashir Janmohamed",
+    personnel: "with Aaron Provisor and Conor Malloy",
+    audio: "/audio/had-to-see.mp3",
+  },
+  {
+    title: "Intro Song",
+    composer: "Borne Visions",
+    personnel: "with Terry Jones, Patrick Godfrey, and Kevin Rush",
+    audio: "/audio/bv-intro-song.mp3",
+  },
+  {
+    title: "Cindy's Song",
+    composer: "Sara Sithi-Amnuai",
+    personnel:
+      "with Sara Sithi-Amnuai, Aaron Shaw, Zekkereya El-Magharbel, Ravi Campbell, Joel Wenhardt, and Daniel Sunshine",
+    audio: "/audio/cindy-song.mp3",
+  },
+  {
+    title: "Reflections",
+    composer: "Thelonious Monk",
+    personnel: "with the Vail Jazz Workshop, 2013",
+    audio: "/audio/reflections.m4a",
+  },
+];
+
+const sinkeaterLink = "https://kman925.bandcamp.com/album/sinkeater-purge";
+
+const transcriptions = [
+  {
+    artist: "Aaron Goldberg",
+    tracks: [
+      {
+        title: "Shed (Live in Paris)",
+        pdf: "/pdfs/transcriptions/aaron-goldberg-shed-live-in-paris-transcription.pdf",
+      },
+      {
+        title: "Shed (Home)",
+        pdf: "/pdfs/transcriptions/aaron-goldberg-shed-trio-transcription.pdf",
+      },
+    ],
+  },
+  {
+    artist: "Art Blakey",
+    tracks: [
+      {
+        title: "Come Rain or Come Shine",
+        pdf: "/pdfs/transcriptions/art-blakey-come-rain-come-shine-transcription.pdf",
+      },
+    ],
+  },
+  {
+    artist: "Austin Peralta",
+    tracks: [
+      {
+        title: "Ode to Love",
+        pdf: "/pdfs/transcriptions/austin-peralta-ode-to-love-transcription.pdf",
+      },
+    ],
+  },
+  {
+    artist: "Dave Holland",
+    tracks: [
+      {
+        title: "Claressence",
+        pdf: "/pdfs/transcriptions/dave-holland-claressence-transcription.pdf",
+      },
+      {
+        title: "Lazy Snake",
+        pdf: "/pdfs/transcriptions/dave-holland-lazy-snake-transcription.pdf",
+      },
+      {
+        title: "The Balance",
+        pdf: "/pdfs/transcriptions/dave-holland-the-balance-transcription.pdf",
+      },
+    ],
+  },
+  {
+    artist: "Fly Trio",
+    tracks: [
+      {
+        title: "State of the Union",
+        pdf: "/pdfs/transcriptions/fly-trio-state-of-the-union-transcription.pdf",
+      },
+    ],
+  },
+  {
+    artist: "Kamasi Washington",
+    tracks: [
+      {
+        title: "Change of the Guard (leadsheet)",
+        pdf: "/pdfs/transcriptions/kamasi-washington-change-of-the-guard-leadsheet.pdf",
+      },
+    ],
+  },
+  {
+    artist: "Peter Bernstein",
+    tracks: [
+      {
+        title: "Metamorphosis (as performed by Kendrick Scott)",
+        pdf: "/pdfs/transcriptions/kendrick-scott-metamorphosis-transcription.pdf",
+      },
+    ],
+  },
+  {
+    artist: "Walter Smith",
+    tracks: [
+      {
+        title: "Himorme (leadsheet)",
+        pdf: "/pdfs/transcriptions/walter-smith-iii-himorme-leadsheet.pdf",
+      },
+    ],
+  },
+];
+
+const septessenceInfo = {
+  bookingEmail: "nashirbass@gmail.com",
+  videos: [
+    {
+      title: "Fre(e)d",
+      composer: "Nashir Janmohamed",
+      embedId: "VyLZKJNdKr0",
+    },
+    {
+      title: "Catching fireflies",
+      composer: "Nashir Janmohamed",
+      embedId: "1srB1zsFgeM",
+    },
+    {
+      title: "Big House",
+      composer: "Rick DiMuzio, arr. Nashir Janmohamed",
+      embedId: "Jt1bG2UAaUk",
+    },
+    {
+      title: "Processional",
+      composer: "Dave Holland",
+      embedId: "WohV4Ls6ILE",
+    },
+  ],
+  members: [
+    { name: "Joshua Mercado", role: "trumpet", ig: "https://www.instagram.com/josh.m_music/" },
+    { name: "Quint Johnson", role: "alto/soprano sax", ig: "https://www.instagram.com/qj_music/" },
+    { name: "Fortunato Occhino", role: "tenor sax", ig: "https://www.instagram.com/fro.music/" },
+    { name: "Noah Charles III", role: "guitar" },
+    { name: "Richard Drexler", role: "piano" },
+    { name: "Nashir Janmohamed", role: "bass, bandleader" },
+    { name: "James Fortune", role: "drums", ig: "https://www.instagram.com/_jamesfortune_/" },
+  ],
+  pastPerformance: {
+    date: "July 26, 2023",
+    venue: "Blue Bamboo Center for the Arts",
+    link: "https://bluebambooartcenter.com/event/5165182/644015419/septessence",
+    poster: "/pictures/septessence-poster-1.png",
+    posterAlt: "Septessence performance poster, July 26, 2023",
+  },
+};
+
+const impulseTrioInfo = {
+  bookingEmail: "nashirbass@gmail.com",
+  recordings: [
+    {
+      title: "State of the Union",
+      composer: "Fly Trio",
+      audio: "/audio/impulse-state-of-the-union.mp3",
+    },
+    {
+      title: "I Hear a Rhapsody",
+      composer: "George Fragos, Jack Baker, and Dick Gasparre",
+      audio: "/audio/impulse-I-hear-a-rhapsody.mp3",
+    },
+    {
+      title: "Stella by Starlight",
+      composer: "Victor Young",
+      audio: "/audio/impulse-stella.mp3",
+    },
+    {
+      title: "Red Cross",
+      composer: "Charlie Parker",
+      audio: "/audio/impulse-red-cross.mp3",
+    },
+    {
+      title: "Wayne's Thang",
+      composer: "Kenny Garrett",
+      audio: "/audio/impulse-waynes-thang.mp3",
+    },
+  ],
+  members: [
+    { name: "Noah Charles III", role: "guitar" },
+    { name: "Nashir Janmohamed", role: "bass" },
+    { name: "James Fortune", role: "drums", ig: "https://www.instagram.com/_jamesfortune_/" },
+  ],
+};
+
 const socialMediaLinks = [
   {
     name: "Github",
@@ -613,6 +861,13 @@ export {
   technicalPapers,
   microGNext,
   quintessence,
+  musicGroups,
+  musicPerformances,
+  recordings,
+  sinkeaterLink,
+  transcriptions,
+  septessenceInfo,
+  impulseTrioInfo,
   socialMediaLinks,
   competitiveSites,
   degrees,

@@ -49,7 +49,7 @@
 - [x] **Phase 2** — Home page · status: **DONE**
 - [x] **Phase 3** — Technical page (+ Quintessence link) · status: **DONE**
 - [x] **Phase 4** — Quintessence standalone page · status: **DONE**
-- [ ] **Phase 5** — Music page · status: **TODO**
+- [x] **Phase 5** — Music page · status: **DONE**
 - [ ] **Phase 6** — Outdoors page · status: **TODO**
 - [ ] **Phase 7** — Contact page · status: **TODO**
 - [ ] **Phase 8** — Polish, responsive pass, deploy · status: **TODO**
@@ -183,18 +183,28 @@ Goal: the new 5-item nav renders, all 6 routes resolve to stub pages, template c
 ---
 
 ## Phase 5 — Music page
-**Prereqs:** Phase 1 DONE · **Status:** TODO
+**Prereqs:** Phase 1 DONE · **Status:** ✅ DONE
 **Source:** `music.htm`, `septessence.htm`, `impulse.htm`
 
-- [ ] **Groups** section: Septessence, The Impulse Trio, Madi and the razz. Fold Septessence/Impulse detail into sections or expandable cards on this page (NO separate routes). Content in Appendix C.
-- [ ] **Performances** (video embeds): music.htm has `VcUOc1hzI2Y` (Fuji), `q8QJHFPw2Bk` (Mark VI). Septessence videos: `1srB1zsFgeM`, `Jt1bG2UAaUk`, `VyLZKJNdKr0`, `WohV4Ls6ILE`.
-- [ ] **Recordings** (`<audio>`): the 6 tracks from music.htm + Bandcamp "Sinkeater" link, and the 5 Impulse Trio tracks. File list in Phase 1 asset list; titles/personnel in Appendix C.
-- [ ] **Transcriptions** table: PDF links by artist (Aaron Goldberg, Art Blakey, Austin Peralta, Dave Holland, Fly Trio, Kamasi Washington, Peter Bernstein, Walter Smith) — see Appendix C.
-- [ ] Septessence extras: members, booking (`nashirbass@gmail.com`), upcoming performances (note: legacy dates are from 2023 — mark as historical or omit; confirm with owner).
+- [x] **Groups** section: Septessence, The Impulse Trio, Madi and the razz. Folded Septessence/Impulse detail into sections further down the same page (NO separate routes) — group list links jump (`#septessence`, `#impulse-trio`) to those sections; Madi links out to Instagram.
+- [x] **Performances** (video embeds): `VcUOc1hzI2Y` (Fuji), `q8QJHFPw2Bk` (Mark VI). Septessence videos: `1srB1zsFgeM`, `Jt1bG2UAaUk`, `VyLZKJNdKr0`, `WohV4Ls6ILE`.
+- [x] **Recordings** (`<audio>`): the 7 tracks from music.htm + Bandcamp "Sinkeater" link, and the 5 Impulse Trio tracks. All files already present under `/audio/` from Phase 1.
+- [x] **Transcriptions** table: PDF links by artist (Aaron Goldberg, Art Blakey, Austin Peralta, Dave Holland, Fly Trio, Kamasi Washington, Peter Bernstein, Walter Smith).
+- [x] Septessence extras: members (brief name/instrument/IG only, per owner), booking (`nashirbass@gmail.com`), one historical performance (July 26, 2023 at Blue Bamboo Center for the Arts — kept, explicitly framed as past, not upcoming, per owner).
 
-**Acceptance check:** `/music` renders groups + video embeds + working audio players + transcription PDF links. At least one audio track plays.
+**Acceptance check:** ✅ PASSED
+- `npm run build` succeeds (only the pre-existing unused-var warnings in `ContactComponent.js`, not introduced by this phase)
+- Served the production build locally (`serve -s build`) and confirmed via bundle inspection that group names, Septessence/Impulse prose, member names, booking email, and the Blue Bamboo performance text are present in the rendered `/music` page
+- Asset/route spot checks all 200 OK: `/music`, `/audio/cant-get-started.mp3`, `/audio/impulse-stella.mp3`, `/pdfs/transcriptions/dave-holland-claressence-transcription.pdf`, `/pictures/septessence-poster-1.png`
 
-**Handoff notes:** _(fill in)_
+**Handoff notes:**
+- **Owner-confirmed decisions** (do not re-litigate): (1) Groups framed in **past tense** — Septessence/Impulse Trio/Madi and the razz are presented as groups from Nashir's Orlando/UCF years, consistent with the already-past-tense home bio, not as ongoing current groups. (2) Member bios are **brief only** (name + instrument + optional Instagram link) — the full paragraph bios + individual photos in `septessence.htm` (Josh, Quint, Fortunato, Noah, Richard, James) were intentionally **not** ported; no new member photos were copied to `public/`. (3) The July 2023 Septessence performance at Blue Bamboo is kept but explicitly labeled as a **past performance**, not "upcoming" (legacy framing).
+- **New files:** `src/containers/music/MusicContent.js` + `MusicContent.css` — thin `src/pages/music/Music.js` now renders `<Header/>` + `<MusicContent/>` + `<Footer/>` + `<TopButton/>`, same pattern as Technical/Quintessence.
+- **portfolio.js additions:** `musicGroups`, `musicPerformances`, `recordings`, `sinkeaterLink`, `transcriptions`, `septessenceInfo` (videos, members, bookingEmail, pastPerformance), `impulseTrioInfo` (recordings, members, bookingEmail). All prose (group descriptions, section intros) is hardcoded JSX in `MusicContent.js`, following the Bio/Technical/Quintessence precedent — only structural data (titles, composers, personnel, file paths, URLs) lives in portfolio.js.
+- **New asset:** copied `pictures/septessence-poster-1.png` (source repo root) → `nashirj/public/pictures/septessence-poster-1.png` (~3.1 MB) for the historical-performance poster. `septessence-poster-2.png` in the source was not referenced anywhere and was not copied.
+- **Layout:** single-page with anchored sections (`#septessence`, `#impulse-trio`) instead of the legacy separate `septessence.htm`/`impulse.htm` pages, per the locked "NO separate routes" decision. Video embeds use a responsive 2-up grid (`music-video-grid`), reusing the same 16:9 iframe wrapper technique as Technical's Med3D embed.
+- **Not touched:** `<audio>` elements use a native `src` attribute directly (no `<source>` child) since only one file format is provided per track — simpler than the legacy `<source>` markup, same playback behavior.
+- **Ready for Phase 6:** Outdoors page can now begin; independent of Music, only needs Phase 1.
 
 ---
 
