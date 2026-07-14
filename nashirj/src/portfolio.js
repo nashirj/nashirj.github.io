@@ -140,6 +140,16 @@ const quintessence = {
   contactEmail: "quintessence.space@gmail.com",
 };
 
+// Outdoors Page
+const outdoors = {
+  climbrImage: "/pictures/climbing-wall.png",
+  climbrImageAlt: "Backyard climbing wall",
+  climbrWebApp: "https://climbr-pro.herokuapp.com",
+  climbrWebAppDefunct: true,
+  climbrNotebook:
+    "https://github.com/nashirj/extract-holds/blob/master/extract_holds.ipynb",
+};
+
 // Music Page
 const musicGroups = [
   {
@@ -861,6 +871,7 @@ export {
   technicalPapers,
   microGNext,
   quintessence,
+  outdoors,
   musicGroups,
   musicPerformances,
   recordings,

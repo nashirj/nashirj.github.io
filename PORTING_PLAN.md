@@ -50,7 +50,7 @@
 - [x] **Phase 3** — Technical page (+ Quintessence link) · status: **DONE**
 - [x] **Phase 4** — Quintessence standalone page · status: **DONE**
 - [x] **Phase 5** — Music page · status: **DONE**
-- [ ] **Phase 6** — Outdoors page · status: **TODO**
+- [x] **Phase 6** — Outdoors page · status: **DONE**
 - [ ] **Phase 7** — Contact page · status: **TODO**
 - [ ] **Phase 8** — Polish, responsive pass, deploy · status: **TODO**
 - [ ] **Phase 9** — Cleanup legacy files (after sign-off) · status: **TODO**
@@ -209,16 +209,26 @@ Goal: the new 5-item nav renders, all 6 routes resolve to stub pages, template c
 ---
 
 ## Phase 6 — Outdoors page
-**Prereqs:** Phase 1 DONE · **Status:** TODO
+**Prereqs:** Phase 1 DONE · **Status:** ✅ DONE
 **Source:** Climbr (misc.htm) + outdoor lines from index.htm
 
-- [ ] **Climbr**: backyard climbing wall + `climbr-pro.herokuapp.com` web app (note: Heroku free tier is likely dead — verify link, mark defunct if so) + CV hold-detection notebook link. Image `climbing-wall.png`.
-- [ ] Outdoor pursuits narrative: rock climbing, hiking/camping/backpacking, basketball (from index.htm free-time line).
-- [ ] Keep external links (GitHub extract-holds notebook).
+- [x] **Climbr**: backyard climbing wall + `climbr-pro.herokuapp.com` web app (note: Heroku free tier is likely dead — verify link, mark defunct if so) + CV hold-detection notebook link. Image `climbing-wall.png`.
+- [x] Outdoor pursuits narrative: rock climbing, hiking/camping/backpacking, basketball (from index.htm free-time line).
+- [x] Keep external links (GitHub extract-holds notebook).
 
-**Acceptance check:** `/outdoors` renders Climbr + narrative + image; links resolve (defunct ones flagged).
+**Acceptance check:** ✅ PASSED
+- `npm run build` succeeds (only the pre-existing unused-var warnings in `ContactComponent.js`, not introduced by this phase)
+- Served the production build locally (`serve -s build`) and confirmed via bundle inspection that "Climbr", "climbing gyms", "Getting outside", "defunct", "extract-holds", and "rock climb, hike" text are present in the rendered `/outdoors` page
+- Route/asset spot checks 200 OK: `/outdoors`, `/pictures/climbing-wall.png`
+- Verified `https://climbr-pro.herokuapp.com` is dead (HTTP 404, Heroku router "no such app") — confirmed the plan's suspicion, so the web app link is rendered as plain text "web app (defunct)" instead of a live link; the CV notebook link (still live on GitHub) remains a working link
 
-**Handoff notes:** _(fill in)_
+**Handoff notes:**
+- **New files:** `src/containers/outdoors/OutdoorsContent.js` + `OutdoorsContent.css` — thin `src/pages/outdoors/Outdoors.js` now renders `<Header/>` + `<OutdoorsContent/>` + `<Footer/>` + `<TopButton/>`, same pattern as Technical/Music/Quintessence.
+- **portfolio.js additions:** `outdoors` object (`climbrImage`, `climbrImageAlt`, `climbrWebApp`, `climbrWebAppDefunct: true`, `climbrNotebook`). Prose is hardcoded JSX in `OutdoorsContent.js`, following the established precedent (Bio/Technical/Music/Quintessence) — only structural data lives in portfolio.js.
+- **Defunct-link handling:** introduced a `climbrWebAppDefunct` boolean flag in portfolio.js; `OutdoorsContent.js` branches on it to render either a live `<a>` or a plain-text "(defunct)" marker. This is the first defunct link encountered in the port — if Phase 8's link audit finds others, this is the pattern to reuse.
+- **Content scope:** kept this page intentionally minimal per Appendix D — Climbr section + a short "Getting outside" narrative (rock climbing, hiking/camping/backpacking, basketball) pulled from the index.htm free-time line. No new images beyond the already-copied `climbing-wall.png` (Phase 1).
+- **Layout:** reuses the same two-column `*-row`/`*-row-text`/`*-row-media` flex pattern as Technical's project rows (own `outdoors-` prefixed CSS class names, not shared classes) for the Climbr image, stacking on mobile ≤768px.
+- **Ready for Phase 7:** Contact page can now begin; independent of Outdoors, only needs Phase 1. Note the pre-existing bug flagged in Phase 2 handoff notes: `src/containers/contact/Contact.js` imports `contactInfo` from portfolio.js but portfolio.js exports `contactPageData` — this will need fixing as part of Phase 7.
 
 ---
 
