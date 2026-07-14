@@ -1,0 +1,23 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "nashirj.com",
+  "keywords": [
+    "react"
+  ],
+  "homepage": "https://github.com/nashirj/nashirj.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/nashirj/nashirj.github.io/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nashirj/nashirj.github.io.git"
+  },
+  "license": "ISC",
+  "author": "Nashir",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "n/a"
+  }
+}
