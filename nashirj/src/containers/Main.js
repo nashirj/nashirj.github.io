@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Home from "../pages/home/HomeComponent";
-import Splash from "../pages/splash/Splash";
-import Education from "../pages/education/EducationComponent";
-import Experience from "../pages/experience/Experience";
-import Opensource from "../pages/opensource/Opensource";
+import Technical from "../pages/technical/Technical";
+import Music from "../pages/music/Music";
+import Outdoors from "../pages/outdoors/Outdoors";
+import Quintessence from "../pages/quintessence/Quintessence";
 import Contact from "../pages/contact/ContactComponent";
-import Projects from "../pages/projects/Projects";
-import { settings } from "../portfolio.js";
 import Error404 from "../pages/errors/error404/Error";
 
 export default class Main extends Component {
@@ -18,53 +16,33 @@ export default class Main extends Component {
           <Route
             path="/"
             exact
-            render={(props) =>
-              settings.isSplash ? (
-                <Splash {...props} theme={this.props.theme} />
-              ) : (
-                <Home {...props} theme={this.props.theme} />
-              )
-            }
-          />
-          <Route
-            path="/home"
             render={(props) => <Home {...props} theme={this.props.theme} />}
           />
           <Route
-            path="/experience"
-            exact
+            path="/technical"
             render={(props) => (
-              <Experience {...props} theme={this.props.theme} />
+              <Technical {...props} theme={this.props.theme} />
             )}
           />
           <Route
-            path="/education"
+            path="/music"
+            render={(props) => <Music {...props} theme={this.props.theme} />}
+          />
+          <Route
+            path="/outdoors"
             render={(props) => (
-              <Education {...props} theme={this.props.theme} />
+              <Outdoors {...props} theme={this.props.theme} />
             )}
           />
-          {/* TODO: Update this to Music */}
-          {/* <Route
-            path="/opensource"
+          <Route
+            path="/quintessence"
             render={(props) => (
-              <Opensource {...props} theme={this.props.theme} />
+              <Quintessence {...props} theme={this.props.theme} />
             )}
-          /> */}
+          />
           <Route
             path="/contact"
             render={(props) => <Contact {...props} theme={this.props.theme} />}
-          />
-
-          {settings.isSplash && (
-            <Route
-              path="/splash"
-              render={(props) => <Splash {...props} theme={this.props.theme} />}
-            />
-          )}
-
-          <Route
-            path="/projects"
-            render={(props) => <Projects {...props} theme={this.props.theme} />}
           />
           <Route
             path="*"

@@ -23,9 +23,40 @@ const greeting = {
   logo_name: "nashirj",
   subTitle:
     "Brooklyn-based software engineer, jazz bassist, composer, climber, and enjoyer of (most) things.",
-  resume_link:
-    "https://drive.google.com/file/d/1wn1WD3FkWfeTqfGSHgceQ8sNE-ghkTCx/view?usp=sharing",
   githubProfile: "https://github.com/nashirj",
+};
+
+const homeBio = {
+  photo: "/pictures/nashir.jpg",
+  resumeLinks: [
+    { label: "CV", href: "/pdfs/Nashir-Janmohamed-CV.pdf" },
+    { label: "Technical Résumé", href: "/pdfs/nashir-cs-resume.pdf" },
+    { label: "Music Résumé", href: "/pdfs/nashir-music-resume.pdf" },
+  ],
+  links: {
+    ksc: "https://www.nasa.gov/centers/kennedy/home/index.html",
+    gsfc: "https://www.nasa.gov/goddard",
+    ucfAI: "https://ucfai.org/",
+    thesisAdvisor: "https://www.eecs.ucf.edu/~gitars/",
+    chessAutomaton: "https://ucfai.github.io/knightros-gambit/index.html",
+  },
+  entryPoints: [
+    {
+      label: "Technical",
+      path: "/technical",
+      blurb: "Software projects, hardware, and papers.",
+    },
+    {
+      label: "Music",
+      path: "/music",
+      blurb: "Groups, performances, recordings, and transcriptions.",
+    },
+    {
+      label: "Outdoors",
+      path: "/outdoors",
+      blurb: "Climbing, hiking, and Climbr.",
+    },
+  ],
 };
 
 const socialMediaLinks = [
@@ -66,206 +97,6 @@ const socialMediaLinks = [
     backgroundColor: "#372213", // Reference https://simpleicons.org/?q=instagram
   },
 ];
-
-const skills = {
-  data: [
-    {
-      title: "Software developer",
-      fileName: "FullStackImg",
-      skills: [
-        "⚡ Building responsive website front end using React-Redux",
-        "⚡ Developing mobile applications using Flutter, React Native and solo android apps using Kotlin",
-        "⚡ Creating application backend in Node, Express & Flask",
-      ],
-      softwareSkills: [
-        {
-          skillName: "HTML5",
-          fontAwesomeClassname: "simple-icons:html5",
-          style: {
-            color: "#E34F26",
-          },
-        },
-        {
-          skillName: "CSS3",
-          fontAwesomeClassname: "fa-css3",
-          style: {
-            color: "#1572B6",
-          },
-        },
-        {
-          skillName: "Sass",
-          fontAwesomeClassname: "simple-icons:sass",
-          style: {
-            color: "#CC6699",
-          },
-        },
-        {
-          skillName: "JavaScript",
-          fontAwesomeClassname: "simple-icons:javascript",
-          style: {
-            backgroundColor: "#000000",
-            color: "#F7DF1E",
-          },
-        },
-        {
-          skillName: "ReactJS",
-          fontAwesomeClassname: "simple-icons:react",
-          style: {
-            color: "#61DAFB",
-          },
-        },
-        {
-          skillName: "NodeJS",
-          fontAwesomeClassname: "devicon-plain:nodejs-wordmark",
-          style: {
-            color: "#339933",
-          },
-        },
-        {
-          skillName: "NPM",
-          fontAwesomeClassname: "simple-icons:npm",
-          style: {
-            color: "#CB3837",
-          },
-        },
-        {
-          skillName: "Yarn",
-          fontAwesomeClassname: "simple-icons:yarn",
-          style: {
-            color: "#2C8EBB",
-          },
-        },
-        {
-          skillName: "Gatsby",
-          fontAwesomeClassname: "simple-icons:gatsby",
-          style: {
-            color: "#663399",
-          },
-        },
-        {
-          skillName: "Flutter",
-          fontAwesomeClassname: "simple-icons:flutter",
-          style: {
-            color: "#02569B",
-          },
-        },
-      ],
-    },
-    {
-      title: "Musician and composer",
-      fileName: "DataScienceImg",
-      skills: [
-        "⚡ Developing highly scalable production ready models for various deeplearning and statistical use cases",
-        "⚡ Experience of working with Computer Vision and NLP projects",
-        "⚡ Complex quantitative modelling for dynamic forecasting and time series analysis",
-      ],
-      softwareSkills: [
-        {
-          skillName: "Sibelius",
-          fontAwesomeClassname: "logos-tensorflow",
-          style: {
-            backgroundColor: "transparent",
-          },
-        },
-        {
-          skillName: "Logic",
-          fontAwesomeClassname: "simple-icons:keras",
-          style: {
-            backgroundColor: "white",
-            color: "#D00000",
-          },
-        },
-        {
-          skillName: "PyTorch",
-          fontAwesomeClassname: "logos-pytorch",
-          style: {
-            backgroundColor: "transparent",
-          },
-        },
-        {
-          skillName: "Python",
-          fontAwesomeClassname: "ion-logo-python",
-          style: {
-            backgroundColor: "transparent",
-            color: "#3776AB",
-          },
-        },
-        {
-          skillName: "Deeplearning",
-          imageSrc: "deeplearning_ai_logo.png",
-        },
-      ],
-    },
-    {
-      title: "Climber and outdoor adventurer",
-      fileName: "CloudInfraImg",
-      skills: [
-        "⚡ Experience working on multiple cloud platforms",
-        "⚡ Hosting and maintaining websites on virtual machine instances along with integration of databases",
-        "⚡ Deploying deep learning models on cloud to use on mobile devices",
-        "⚡ Setting up streaming jobs from DB to Server or vice-versa on GCP and AWS",
-      ],
-      softwareSkills: [
-        {
-          skillName: "GCP",
-          fontAwesomeClassname: "simple-icons:googlecloud",
-          style: {
-            color: "#4285F4",
-          },
-        },
-        {
-          skillName: "AWS",
-          fontAwesomeClassname: "simple-icons:amazonaws",
-          style: {
-            color: "#FF9900",
-          },
-        },
-        {
-          skillName: "Azure",
-          fontAwesomeClassname: "simple-icons:microsoftazure",
-          style: {
-            color: "#0089D6",
-          },
-        },
-        {
-          skillName: "Firebase",
-          fontAwesomeClassname: "simple-icons:firebase",
-          style: {
-            color: "#FFCA28",
-          },
-        },
-        {
-          skillName: "PostgreSQL",
-          fontAwesomeClassname: "simple-icons:postgresql",
-          style: {
-            color: "#336791",
-          },
-        },
-        {
-          skillName: "MongoDB",
-          fontAwesomeClassname: "simple-icons:mongodb",
-          style: {
-            color: "#47A248",
-          },
-        },
-        {
-          skillName: "Docker",
-          fontAwesomeClassname: "simple-icons:docker",
-          style: {
-            color: "#1488C6",
-          },
-        },
-        {
-          skillName: "Kubernetes",
-          fontAwesomeClassname: "simple-icons:kubernetes",
-          style: {
-            color: "#326CE5",
-          },
-        },
-      ],
-    },
-  ],
-};
 
 // Education Page
 const competitiveSites = {
@@ -695,8 +526,8 @@ export {
   settings,
   seo,
   greeting,
+  homeBio,
   socialMediaLinks,
-  skills,
   competitiveSites,
   degrees,
   certifications,

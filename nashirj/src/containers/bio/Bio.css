@@ -1,0 +1,120 @@
+.bio-main {
+  width: 90%;
+  max-width: 1200px;
+  padding: 20px 10px;
+  margin: 0px auto;
+  margin-top: 4rem;
+  display: flex;
+}
+
+.bio-photo-col {
+  flex: 0 0 30%;
+  text-align: center;
+  padding-right: 2rem;
+}
+
+.bio-photo {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.bio-resume-links {
+  margin-top: 1.5rem;
+  line-height: 2;
+}
+
+.bio-resume-link {
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.bio-text-col {
+  flex: 1;
+}
+
+.bio-title {
+  font-size: 50px;
+  line-height: 1.1;
+  margin-top: 0;
+}
+
+.bio-subtitle {
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+.bio-paragraphs {
+  margin-top: 1.5rem;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.bio-paragraphs p {
+  margin-bottom: 1.2rem;
+}
+
+.bio-entry-points {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.bio-entry-point {
+  flex: 1 1 200px;
+  border: solid 1px;
+  border-radius: 8px;
+  padding: 1rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in;
+}
+
+.bio-entry-point:hover {
+  transform: translateY(-4px);
+}
+
+.bio-entry-point-label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.bio-entry-point-blurb {
+  font-size: 14px;
+  margin-top: 0.5rem;
+}
+
+/* Media Query */
+@media (max-width: 768px) {
+  .bio-main {
+    display: block;
+  }
+
+  .bio-photo-col {
+    padding-right: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .bio-title {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .bio-subtitle {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .bio-paragraphs {
+    font-size: 16px;
+  }
+
+  .bio-entry-points {
+    display: block;
+  }
+
+  .bio-entry-point {
+    margin-bottom: 1rem;
+  }
+}
