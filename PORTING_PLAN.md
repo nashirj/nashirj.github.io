@@ -47,7 +47,7 @@
 - [x] **Phase 0** — Baseline: get the app running as-is · status: **DONE**
 - [x] **Phase 1** — Shell: strip template, rewrite nav + routes, stub pages, copy assets · status: **DONE**
 - [x] **Phase 2** — Home page · status: **DONE**
-- [ ] **Phase 3** — Technical page (+ Quintessence link) · status: **TODO**
+- [x] **Phase 3** — Technical page (+ Quintessence link) · status: **DONE**
 - [ ] **Phase 4** — Quintessence standalone page · status: **TODO**
 - [ ] **Phase 5** — Music page · status: **TODO**
 - [ ] **Phase 6** — Outdoors page · status: **TODO**
@@ -106,33 +106,54 @@ Goal: the new 5-item nav renders, all 6 routes resolve to stub pages, template c
 ---
 
 ## Phase 2 — Home page
-**Prereqs:** Phase 1 DONE · **Status:** IN PROGRESS
+**Prereqs:** Phase 1 DONE · **Status:** ✅ DONE
 **Source:** `index.htm`
 
-- [ ] Port bio (the 5 intro paragraphs). Update any stale details vs. `greeting` in portfolio.js (note: `greeting` already says "Brooklyn-based"; index.htm text is older/Orlando-era — prefer the current Brooklyn framing, confirm with owner if unsure — leave a `TODO:` comment rather than guessing facts).
-- [ ] Headshot `pictures/nashir.jpg` → `/pictures/nashir.jpg`.
-- [ ] Résumé links: CV, Technical Résumé, Music Résumé → the copied PDFs.
-- [ ] Add clear entry points/links into `/technical`, `/music`, `/outdoors`.
-- [ ] Keep external links from the bio (NASA, Google, clubs, thesis) — see Appendix A.
+- [x] Port bio. Confirmed stale details directly with the owner instead of guessing (see below) and rewrote as 4 paragraphs (NASA/Google internship paragraphs merged/trimmed per owner's preference).
+- [x] Headshot `pictures/nashir.jpg` → `/pictures/nashir.jpg`.
+- [x] Résumé links: CV, Technical Résumé, Music Résumé → the copied PDFs.
+- [x] Added entry-point cards linking to `/technical`, `/music`, `/outdoors`.
+- [x] Kept external links from the bio (NASA KSC/GSFC, Google — mentioned without links since no stable URL, UCF AI, thesis advisor, chess automaton) — see Appendix A. **Dropped** the UCF Rock Climbing club link per owner instruction (rock climbing is still mentioned as a personal interest in the closing paragraph, just without that link).
 
-**Acceptance check:** `/` renders bio + photo + résumé links (PDFs open) + section links navigate correctly.
+**Acceptance check:** ✅ PASSED
+- `npm run build` succeeds (only pre-existing unused-var warnings in `ContactComponent.js`, not introduced by this phase)
+- `npm start` verified clean compile; confirmed via bundle inspection that bio text, résumé links, and entry-point links are present in the rendered `/` page
+- Asset/link spot checks all 200 OK: `/`, `/pictures/nashir.jpg`, `/pdfs/Nashir-Janmohamed-CV.pdf`, `/pdfs/nashir-cs-resume.pdf`, `/pdfs/nashir-music-resume.pdf`, `/technical`, `/music`, `/outdoors`
 
-**Handoff notes:** _(fill in)_
+**Handoff notes:**
+- **Owner-confirmed bio facts** (do not re-litigate, these override index.htm's stale Orlando/UCF-student framing): graduated from UCF (both degrees are past tense); current role described generically as "software engineer" with no employer named; closing location line updated to Brooklyn, NY (native of LA kept); NASA (4x) + Google (2x) internship history intentionally trimmed/shortened rather than reproduced in full; UCF club/thesis/side-project involvement reframed as past/college activities, not ongoing.
+- **New files:** `src/containers/bio/Bio.js` + `Bio.css` — replaces the old template `Greeting`/`Skills` containers on the Home page. Data lives in `portfolio.js` as `homeBio` (photo, resumeLinks, external `links`, `entryPoints`); the actual bio prose is hardcoded JSX in `Bio.js` (not in portfolio.js) since it has inline anchor tags that don't fit cleanly in plain string config.
+- **Deleted (dead code, no longer referenced anywhere):** `containers/greeting/` (Greeting.js, Greeting.css, FeelingProud.js), `containers/skills/` (Skills.js, Skills.css, SkillSection.js, FullStackImg.js, DesignImg.js), `components/softwareSkills/`. Also removed the now-orphaned `skills` data block and `greeting.resume_link` field from `portfolio.js`.
+- **Pre-existing bug spotted, not fixed (out of scope, belongs to Phase 7):** `src/containers/contact/Contact.js` imports `contactInfo` from `portfolio.js`, but portfolio.js exports `contactPageData` — `contactInfo` is `undefined`, so `/contact` will throw at render. Flagging for whoever picks up Phase 7.
+- **Also noticed, not touched:** `src/containers/StartupProjects/` is unused leftover template code (not imported anywhere) — candidate for cleanup in a later phase, same category as the Phase 1 stripping pass.
+- **Ready for Phase 3:** Technical page can now begin; `homeBio.entryPoints` already links `/` → `/technical`.
 
 ---
 
 ## Phase 3 — Technical page
-**Prereqs:** Phase 1 DONE · **Status:** TODO
+**Prereqs:** Phase 1 DONE · **Status:** ✅ DONE
 **Source:** `code.htm` + technical parts of `misc.htm`
 
-- [ ] Add `technicalProjects` data to portfolio.js and render cards. Projects (full text/links in Appendix B): **Ridesio, discretemath, SMC Robotics Club, Med3D, Vulcanet, Rust RSA**, plus an "Other → GitHub" note.
-- [ ] Add **Hardware** section (misc.htm) and **Technical Papers** section (misc.htm — includes NASA NTRS links + CLaMP PDF).
-- [ ] Add a **NASA Micro-G NExT** intro card that **links to `/quintessence`**.
-- [ ] Images: `ridesio.jpg`, `dmgui.png`, `robots.jpg` (already copied). Med3D uses a YouTube embed (`fnNXSTg8DJc`).
+- [x] Add `technicalProjects` data to portfolio.js and render cards. Projects (full text/links in Appendix B): **Ridesio, discretemath, SMC Robotics Club, Med3D, Vulcanet, Rust RSA**, plus an "Other → GitHub" note.
+- [x] Add **Hardware** section (misc.htm) and **Technical Papers** section (misc.htm — includes NASA NTRS links + CLaMP PDF).
+- [x] Add a **NASA Micro-G NExT** intro card that **links to `/quintessence`**.
+- [x] Images: `ridesio.jpg`, `dmgui.png`, `robots.jpg` (already copied). Med3D uses a YouTube embed (`fnNXSTg8DJc`).
 
-**Acceptance check:** `/technical` renders all projects + hardware + papers; Quintessence link navigates to `/quintessence`; images and the Med3D embed load; PDF/paper links resolve.
+**Acceptance check:** ✅ PASSED
+- `npm run build` succeeds (only the pre-existing unused-var warnings in `ContactComponent.js`, not introduced by this phase)
+- `npm start` verified clean compile ("Compiled with warnings" — same pre-existing Contact warnings only); confirmed via bundle inspection that project descriptions, Hardware/Papers text, and the Quintessence link are present in the rendered `/technical` page
+- Route/asset/link spot checks all 200 OK: `/technical`, `/quintessence`, `/pictures/ridesio.jpg`, `/pictures/dmgui.png`, `/pictures/robots.jpg`, `/quintessence-images/team-5.jpg`, `/pdfs/NASA_Micro_G_NExT_Quintessence_CLaMP.pdf`
+- Med3D YouTube embed (`fnNXSTg8DJc`) confirmed present in rendered output
 
-**Handoff notes:** _(fill in)_
+**Handoff notes:**
+- **New files:** `src/containers/technical/TechnicalContent.js` + `TechnicalContent.css` — thin `src/pages/technical/Technical.js` now renders `<Header/>` + `<TechnicalContent/>` + `<Footer/>` + `<TopButton/>`, mirroring the Home/Bio pattern from Phase 2.
+- **portfolio.js additions:** `technicalProjects` (array: id, title, image/imageAlt or videoEmbedId), `technicalLinks` (flat map of external URLs referenced inline), `technicalPapers` (CLaMP PDF + 3 NTRS URLs), `microGNext` (intro image + JSC/NBL links). Exported alongside existing exports.
+- **Prose placement follows the Bio precedent:** project/section descriptions with inline anchor tags are hardcoded JSX in `TechnicalContent.js` (a `projectDescriptions` map keyed by project id), not stored as plain strings in portfolio.js, since they mix text and links. Structural data (images, URLs) lives in portfolio.js.
+- **Layout:** each project renders as a responsive two-column row (text + image/video, stacking on mobile ≤768px), consistent with the legacy Bootstrap `col-sm-7`/`col-sm-5` layout. Med3D uses a 16:9 responsive iframe wrapper instead of an image.
+- **Quintessence link:** the Technical Papers section links "Quintessence" inline (CLaMP paragraph) and the Micro-G NExT section has a dedicated "Read more about the project: Quintessence →" link — both use React Router `<Link to="/quintessence">`, not a raw `<a>`, since it's an internal route.
+- **Minor content note:** capitalized "Raspberry Pi"/"Arduino" in the Hardware paragraph (lowercase in the legacy misc.htm) for consistency with proper-noun capitalization elsewhere on the site; no factual content changed.
+- **Not touched:** the unrelated portfolio.js cruft (`competitiveSites`, `degrees`, `certifications`, `experience`, `projectsHeader`, `publicationsHeader`, `publications`) flagged in Phase 1/2 handoff notes is still there — still out of scope for this phase, since it isn't referenced by the Technical page.
+- **Ready for Phase 4:** `/technical` now links to `/quintessence`; the Quintessence standalone page can be built next (still just a stub).
 
 ---
 
