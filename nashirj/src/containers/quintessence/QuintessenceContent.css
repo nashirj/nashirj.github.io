@@ -1,0 +1,52 @@
+.quintessence-main {
+  width: 90%;
+  max-width: 800px;
+  padding: 20px 10px;
+  margin: 0px auto;
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.quintessence-header-image {
+  max-width: 40%;
+  padding-top: 1rem;
+}
+
+.quintessence-title {
+  font-size: 32px;
+  line-height: 1.3;
+  margin: 1.5rem 0;
+}
+
+.quintessence-team-image {
+  max-width: 90%;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.quintessence-body {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.quintessence-back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .quintessence-title {
+    font-size: 24px;
+  }
+
+  .quintessence-body {
+    font-size: 16px;
+  }
+
+  .quintessence-header-image {
+    max-width: 60%;
+  }
+}

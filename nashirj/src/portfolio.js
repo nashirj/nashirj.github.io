@@ -129,6 +129,17 @@ const microGNext = {
   nbl: "https://www.nasa.gov/image-feature/neutral-buoyancy-laboratory",
 };
 
+const quintessence = {
+  headerImage: "/quintessence-images/header.jpg",
+  headerImageAlt: "Quintessence logo",
+  teamImage: "/quintessence-images/team-before-test.jpg",
+  teamImageAlt: "Quintessence team before testing at NASA",
+  ncas: "https://stemgateway.nasa.gov/public/s/course-offering/a0Bt0000004l8d3EAA/nasa-community-college-aerospace-scholars-ncas",
+  microGNext: "https://microgravityuniversity.jsc.nasa.gov/about-micro-g-next.cfm",
+  proposal: "/pdfs/proposal.pdf",
+  contactEmail: "quintessence.space@gmail.com",
+};
+
 const socialMediaLinks = [
   {
     name: "Github",
@@ -601,6 +612,7 @@ export {
   technicalLinks,
   technicalPapers,
   microGNext,
+  quintessence,
   socialMediaLinks,
   competitiveSites,
   degrees,

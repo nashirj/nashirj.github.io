@@ -48,7 +48,7 @@
 - [x] **Phase 1** — Shell: strip template, rewrite nav + routes, stub pages, copy assets · status: **DONE**
 - [x] **Phase 2** — Home page · status: **DONE**
 - [x] **Phase 3** — Technical page (+ Quintessence link) · status: **DONE**
-- [ ] **Phase 4** — Quintessence standalone page · status: **TODO**
+- [x] **Phase 4** — Quintessence standalone page · status: **DONE**
 - [ ] **Phase 5** — Music page · status: **TODO**
 - [ ] **Phase 6** — Outdoors page · status: **TODO**
 - [ ] **Phase 7** — Contact page · status: **TODO**
@@ -158,17 +158,27 @@ Goal: the new 5-item nav renders, all 6 routes resolve to stub pages, template c
 ---
 
 ## Phase 4 — Quintessence standalone page
-**Prereqs:** Phase 1 DONE (Phase 3 provides the inbound link but isn't required to build this) · **Status:** TODO
+**Prereqs:** Phase 1 DONE (Phase 3 provides the inbound link but isn't required to build this) · **Status:** ✅ DONE
 **Source:** `quintessence/index.htm`
 
-- [ ] Port the overview: mission line, team blurb (met at NCAS at Armstrong; completed Micro-G NExT), CLaMP description, contact email `quintessence.space@gmail.com`.
-- [ ] Images: `quintessence-images/header.jpg`, `team-before-test.jpg`.
-- [ ] Link to the redacted design proposal PDF (`/pdfs/proposal.pdf`).
-- [ ] Add a "back to Technical" link.
+- [x] Port the overview: mission line, team blurb (met at NCAS at Armstrong; completed Micro-G NExT), CLaMP description, contact email `quintessence.space@gmail.com`.
+- [x] Images: `quintessence-images/header.jpg`, `team-before-test.jpg`.
+- [x] Link to the redacted design proposal PDF (`/pdfs/proposal.pdf`).
+- [x] Add a "back to Technical" link.
 
-**Acceptance check:** `/quintessence` renders overview + photos + proposal PDF link; standalone (not in nav) but reachable via direct URL and from Technical.
+**Acceptance check:** ✅ PASSED
+- `npm run build` succeeds (only the pre-existing unused-var warnings in `ContactComponent.js`, not introduced by this phase)
+- Served the production build locally (`serve -s build`) and confirmed via bundle/route inspection that the mission line, NCAS blurb, contact email, and "Back to Technical" link are present in the rendered `/quintessence` page
+- Asset spot checks all 200 OK: `/quintessence`, `/quintessence-images/header.jpg`, `/quintessence-images/team-before-test.jpg`, `/pdfs/proposal.pdf`
 
-**Handoff notes:** _(fill in)_
+**Handoff notes:**
+- **New files:** `src/containers/quintessence/QuintessenceContent.js` + `QuintessenceContent.css` — thin `src/pages/quintessence/Quintessence.js` now renders `<Header/>` + `<QuintessenceContent/>` + `<Footer/>` + `<TopButton/>`, mirroring the Technical/Bio pattern from Phases 2–3 (replaced the Phase 1 "Content coming soon..." stub).
+- **portfolio.js additions:** `quintessence` object (headerImage, headerImageAlt, teamImage, teamImageAlt, ncas link, microGNext link, proposal PDF path, contactEmail), exported alongside existing exports.
+- **Prose placement follows the Bio/Technical precedent:** the overview paragraphs (with inline anchor tags) are hardcoded JSX in `QuintessenceContent.js`, not stored as plain strings in portfolio.js. Structural data (image paths, URLs, contact email) lives in portfolio.js.
+- **Content note:** legacy `quintessence/index.htm` had a full mini-site nav (PROJECTS/OUTREACH/GALLERY/TEAM/SPONSORS/CONTACT) — intentionally **not** ported per the locked decision (single standalone summary page only). Also fixed a dead relative link in the source (`href="team.htm"` on "team of students" text) by just not linking that phrase, since no team subpage exists in this port.
+- **Layout:** single centered column (max-width 800px) with header logo image, title, team photo, body text, and back-link — matches the legacy site's `<center>`-based layout without reproducing the old nav.
+- **Not touched:** `/technical` already linked to `/quintessence` from Phase 3 (Technical Papers section + Micro-G NExT section) — no changes needed there.
+- **Ready for Phase 5:** Music page can now begin; independent of Quintessence, only needs Phase 1.
 
 ---
 

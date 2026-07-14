@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from "../../components/header/Header";
+import QuintessenceContent from "../../containers/quintessence/QuintessenceContent";
 import Footer from "../../components/footer/Footer";
 import TopButton from "../../components/topButton/TopButton";
 
@@ -8,10 +9,7 @@ class Quintessence extends Component {
     return (
       <div>
         <Header theme={this.props.theme} />
-        <div style={{ padding: "40px 20px", textAlign: "center" }}>
-          <h1>Quintessence</h1>
-          <p>Content coming soon...</p>
-        </div>
+        <QuintessenceContent theme={this.props.theme} />
         <Footer theme={this.props.theme} />
         <TopButton theme={this.props.theme} />
       </div>
