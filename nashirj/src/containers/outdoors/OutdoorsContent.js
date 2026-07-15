@@ -21,12 +21,7 @@ export default function OutdoorsContent(props) {
                 In 2020 (during quarantine), I was unable to go to climbing
                 gyms, so my housemate and I built a climbing wall in our
                 backyard. I also created a{" "}
-                {outdoors.climbrWebAppDefunct ? (
-                  <span>
-                    web app
-                    <sup className="outdoors-defunct-marker"> (defunct)</sup>
-                  </span>
-                ) : (
+                {(
                   <a
                     href={outdoors.climbrWebApp}
                     target="_blank"

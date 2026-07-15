@@ -211,8 +211,7 @@ const quintessenceGallery = [
 const outdoors = {
   climbrImage: "/pictures/climbing-wall.png",
   climbrImageAlt: "Backyard climbing wall",
-  climbrWebApp: "https://climbr-pro.herokuapp.com",
-  climbrWebAppDefunct: true,
+  climbrWebApp: "https://github.com/nashirj/climbr",
   climbrNotebook:
     "https://github.com/nashirj/extract-holds/blob/master/extract_holds.ipynb",
 };
