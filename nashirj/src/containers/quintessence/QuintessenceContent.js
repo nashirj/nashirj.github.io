@@ -2,7 +2,8 @@ import React from "react";
 import "./QuintessenceContent.css";
 import { Link } from "react-router-dom";
 import { Fade } from "react-reveal";
-import { quintessence } from "../../portfolio";
+import { quintessence, quintessenceGallery } from "../../portfolio";
+import GalleryGrid from "../../components/galleryGrid/GalleryGrid";
 
 export default function QuintessenceContent(props) {
   const theme = props.theme;
@@ -61,6 +62,13 @@ export default function QuintessenceContent(props) {
           </p>
           <p>Contact: {quintessence.contactEmail}</p>
         </div>
+      </div>
+
+      <div className="quintessence-gallery-section">
+        <h2 className="quintessence-gallery-title" style={{ color: theme.text }}>
+          Gallery
+        </h2>
+        <GalleryGrid items={quintessenceGallery} theme={theme} />
 
         <Link to="/technical" className="quintessence-back-link">
           &larr; Back to Technical

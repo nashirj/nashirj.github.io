@@ -140,6 +140,73 @@ const quintessence = {
   contactEmail: "quintessence.space@gmail.com",
 };
 
+const galleryImage = (name, caption, section) => ({
+  id: name,
+  thumb: `/quintessence-images/gallery/thumbs/${name}.jpg`,
+  full: `/quintessence-images/gallery/full/${name}.jpg`,
+  caption,
+  section,
+});
+
+const quintessenceGallery = [
+  // Section: Onsite Testing at Johnson Space Center
+  galleryImage("clayton-anderson-1", "Clayton Anderson, former astronaut", "jsc"),
+  galleryImage("clayton-anderson-2", "Clayton Anderson, former astronaut", "jsc"),
+  galleryImage("clayton-anderson-3", "Clayton Anderson, former astronaut", "jsc"),
+  galleryImage("diver-debrief-1", "Debriefing divers on proper usage of tool", "jsc"),
+  galleryImage("diver-debrief-2", "Debriefing divers on proper usage of tool", "jsc"),
+  galleryImage("diver-debrief-3", "Debriefing divers on proper usage of tool", "jsc"),
+  galleryImage(
+    "divers-post-testing",
+    "Divers discussing impressions of tool usability and performance",
+    "jsc"
+  ),
+  galleryImage("divers", "Divers in the NBL prior to testing", "jsc"),
+  galleryImage("jsc-everyone", "Micro-G NExT test week 1 participants in front of NBL", "jsc"),
+  galleryImage("team-2", "Quintessence", "jsc"),
+  galleryImage("team-3", "Quintessence", "jsc"),
+  galleryImage("team-4", "Quintessence", "jsc"),
+  galleryImage("team-5", "Quintessence", "jsc"),
+  galleryImage("team-w-friends", "Quintessence with coop interns at Johnson Space Center", "jsc"),
+  galleryImage("team-w-spacesuit", "Quintessence with a used spacesuit at the NBL spacesuit lab", "jsc"),
+  galleryImage(
+    "team-mission-control",
+    "Quintessence in JSC's mission control, watching ISS operations in real time",
+    "jsc"
+  ),
+  galleryImage("team-w-divers", "Quintessence with NBL divers after testing", "jsc"),
+  galleryImage("testing-1", "Quintessence in NBL control room during testing", "jsc"),
+  galleryImage("testing-2", "Quintessence in NBL control room during testing", "jsc"),
+  galleryImage("testing-3", "Quintessence in NBL control room during testing", "jsc"),
+  galleryImage("nbl", "The NBL, where the CLaMP was tested", "jsc"),
+  // Section: Prototype Development
+  galleryImage(
+    "clamp-ceta",
+    "The CLaMP being tested by team member Alex Miyoshi in the Fullerton College pool",
+    "prototype"
+  ),
+  galleryImage(
+    "clamp-handrail-1",
+    "The CLaMP being tested by team member Alex Miyoshi in the Fullerton College pool",
+    "prototype"
+  ),
+  // Legacy caption for this image was a copy-paste error referencing the CLaMP test
+  // stand; the file is actually an FEA render. Flagged for owner review.
+  galleryImage("finite-element-analysis", "Finite element analysis of the CLaMP", "prototype"),
+  galleryImage("yaw-v3", "Final version of yaw mechanism", "prototype"),
+  galleryImage("yaw-v2", "Second version of yaw mechanism", "prototype"),
+  galleryImage("yaw-v1", "First version of yaw mechanism", "prototype"),
+  galleryImage("arm-v4", "Final version of arm mechanism", "prototype"),
+  galleryImage("arm-v3", "Third version of arm mechanism", "prototype"),
+  galleryImage("arm-v2", "Second version of arm mechanism", "prototype"),
+  galleryImage("arm-v1", "First version of arm mechanism", "prototype"),
+  galleryImage("screw-knob-new", "New version of screw knob", "prototype"),
+  galleryImage("screw-knob-old", "Old version of screw knob", "prototype"),
+  galleryImage("clamp-knob-new", "New version of clamp knob", "prototype"),
+  galleryImage("clamp-knob-old", "Old version of clamp knob", "prototype"),
+  galleryImage("final-clamp-poc", "Final proof of concept rendition of CLaMP", "prototype"),
+];
+
 // Outdoors Page
 const outdoors = {
   climbrImage: "/pictures/climbing-wall.png",
@@ -456,6 +523,7 @@ export {
   technicalPapers,
   microGNext,
   quintessence,
+  quintessenceGallery,
   outdoors,
   musicGroups,
   musicPerformances,

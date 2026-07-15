@@ -48,19 +48,19 @@
 
 ## Progress tracker
 
-- [ ] **Phase 1** — Generate optimized gallery images · status: **TODO**
-- [ ] **Phase 2** — Gallery grid + lightbox components · status: **TODO**
-- [ ] **Phase 3** — Wire into Quintessence page, polish, verify, deploy · status: **TODO**
+- [x] **Phase 1** — Generate optimized gallery images · status: **DONE**
+- [x] **Phase 2** — Gallery grid + lightbox components · status: **DONE**
+- [x] **Phase 3** — Wire into Quintessence page, polish, verify, deploy · status: **DONE (pending deploy approval)**
 
 ---
 
 ## Phase 1 — Generate optimized gallery images
-**Prereqs:** none · **Status:** TODO
+**Prereqs:** none · **Status:** DONE
 
 Goal: every Appendix A image exists in `nashirj/public/quintessence-images/gallery/` in two sizes,
 with normalized names, at a total size that won't bloat the repo or the page.
 
-- [ ] Write a one-off script (bash + `sips`, which is built into macOS, or ImageMagick if
+- [x] Write a one-off script (bash + `sips`, which is built into macOS, or ImageMagick if
       available) in the scratchpad — it does **not** get committed. For each Appendix A image:
       - **Thumbnail** → `gallery/thumbs/<name>.jpg`: max dimension **480px**, JPEG quality ~75.
       - **Lightbox size** → `gallery/full/<name>.jpg`: max dimension **1600px**, JPEG quality ~80.
@@ -70,25 +70,51 @@ with normalized names, at a total size that won't bloat the repo or the page.
       - Strip EXIF metadata if the tool supports it (`sips` drops most of it on resize by default).
       - **Respect EXIF orientation** — verify a few portrait shots aren't rotated sideways after
         resize (sips honors orientation; ImageMagick needs `-auto-orient`).
-- [ ] Sanity-check output: `du -sh` each dir (thumbs should be well under 2 MB total; full set
+- [x] Sanity-check output: `du -sh` each dir (thumbs should be well under 2 MB total; full set
       under ~13 MB), spot-open ~5 images including at least one `.JPG`-source and the `.png`-source.
-- [ ] Record final sizes + the exact resize commands in Handoff notes (so images can be
+- [x] Record final sizes + the exact resize commands in Handoff notes (so images can be
       regenerated or new ones added consistently later).
 
 **Acceptance check:** 36 thumbs + 36 full-size files exist under
 `nashirj/public/quintessence-images/gallery/{thumbs,full}/`, all lowercase `.jpg`, combined size
-≤ 15 MB, no sideways-rotated images.
+≤ 15 MB, no sideways-rotated images. ✅ Verified: 36 + 36 files, all lowercase `.jpg`, total 13.82 MB,
+no rotation issues (all source EXIF orientation tags were nil, i.e. no rotation needed).
 
-**Handoff notes:** _(fill in)_
+**Handoff notes:**
+
+- Tool used: `sips` (ImageMagick not installed on this machine; not needed — `sips` handled
+  format conversion, resizing, and orientation fine).
+- Final sizes: `thumbs/` = 1.89 MB (36 files), `full/` = 11.92 MB (36 files), **total = 13.82 MB**
+  — under the 15 MB budget.
+- Quality tuning: thumbnails use JPEG quality 75 as planned. Full/lightbox images were **dropped
+  from quality 80 → 72** after a first pass came in at 15.25 MB (just over budget); quality 72
+  brought the full set from 13.36 MB → 11.92 MB with no visible quality loss at the 1600px
+  lightbox display size (spot-checked visually).
+- Exact commands per image (run from `quintessence/images/`):
+  ```bash
+  sips -s format jpeg -s formatOptions 75 -Z 480 "<src>" --out "gallery/thumbs/<normalized-name>.jpg"
+  sips -s format jpeg -s formatOptions 72 -Z 1600 "<src>" --out "gallery/full/<normalized-name>.jpg"
+  ```
+  `-Z <n>` scales so the longer edge is `<n>`px, preserving aspect ratio. Full source→normalized
+  name mapping (identical to Appendix A order) is preserved in the (uncommitted) scratchpad script
+  `resize_gallery.sh` if images need to be regenerated later.
+- Orientation: checked `sips -g orientation` on several sources (`NBL.jpg`, `clayton-anderson-3.JPG`,
+  `finite-element-analysis.png`, `divers.jpg`) — all reported `orientation: <nil>` (no EXIF rotation
+  tag, pixels already correctly oriented), so no `-auto-orient`-equivalent step was needed. Visually
+  confirmed `.JPG`-source (`clayton-anderson-3.jpg`) and `.png`-source
+  (`finite-element-analysis.jpg` — confirmed to genuinely be an FEA render, validating the caption
+  fix planned for Phase 2) render right-side-up.
+- All 36 Appendix A source files were confirmed present in `quintessence/images/` before running
+  the script; none were missing.
 
 ---
 
 ## Phase 2 — Gallery grid + lightbox components
-**Prereqs:** Phase 1 DONE · **Status:** TODO
+**Prereqs:** Phase 1 DONE · **Status:** DONE
 
 Goal: reusable, dependency-free gallery UI matching the site's theme.
 
-- [ ] **`portfolio.js`:** add `quintessenceGallery` export — array of
+- [x] **`portfolio.js`:** add `quintessenceGallery` export — array of
       `{ id, thumb, full, caption, section }` built from Appendix A. Paths root-relative
       (`/quintessence-images/gallery/thumbs/….jpg`), per the port's asset convention. Two section
       values: `"jsc"` and `"prototype"`, with display titles kept in the component
@@ -97,7 +123,7 @@ Goal: reusable, dependency-free gallery UI matching the site's theme.
       `finite-element-analysis.png` ("The CLaMP on the test stand outside of the Fullerton College
       pool") is clearly a copy-paste error — the file is an FEA render. Use
       "Finite element analysis of the CLaMP" and note it in Handoff notes for owner review.
-- [ ] **`GalleryGrid` component** (`src/components/galleryGrid/GalleryGrid.js` + `.css`):
+- [x] **`GalleryGrid` component** (`src/components/galleryGrid/GalleryGrid.js` + `.css`):
       - Responsive CSS grid of thumbnails: `repeat(auto-fill, minmax(160px, 1fr))`, square-ish
         cells (`aspect-ratio` + `object-fit: cover`), small gap; collapses to 2 columns on mobile.
       - Every `<img>` gets `loading="lazy"` and `alt={caption}` — 36 images must not all load
@@ -106,7 +132,7 @@ Goal: reusable, dependency-free gallery UI matching the site's theme.
         clicking opens the lightbox at that index.
       - Renders one grid per section with an `<h3>` section title styled with `theme.text`,
         mirroring the legacy page's two-section structure.
-- [ ] **`Lightbox` component** (`src/components/lightbox/Lightbox.js` + `.css`), custom, no deps:
+- [x] **`Lightbox` component** (`src/components/lightbox/Lightbox.js` + `.css`), custom, no deps:
       - Fixed full-viewport overlay (dark scrim), centered `full`-size image
         (`max-width/max-height` ~90vw/85vh, `object-fit: contain`), caption below, ×-close button,
         ‹ › prev/next buttons, "n / 36" counter.
@@ -120,30 +146,67 @@ Goal: reusable, dependency-free gallery UI matching the site's theme.
         focus into the dialog on open and back to the invoking thumbnail on close.
       - State (`openIndex` or `null`) lives in the parent (`GalleryGrid` or the container);
         `Lightbox` is controlled via props (`items`, `index`, `onClose`, `onPrev`, `onNext`).
-- [ ] Match existing style conventions: class-name prefixes (`gallery-`, `lightbox-`), theme
+- [x] Match existing style conventions: class-name prefixes (`gallery-`, `lightbox-`), theme
       colors via the `theme` prop (scrim/controls can be hardcoded dark — a lightbox scrim is
       dark in both themes), CSS files co-located like every other component.
 
 **Acceptance check:** Components compile with zero new warnings; grid renders both sections from
 `quintessenceGallery`; lightbox opens/closes/navigates via mouse **and** keyboard; body doesn't
-scroll behind it; no console errors.
+scroll behind it; no console errors. ✅ Verified — see Handoff notes.
 
-**Handoff notes:** _(fill in)_
+**Handoff notes:**
+
+- Added `quintessenceGallery` (36 entries, `jsc`/`prototype` sections) to `portfolio.js` via a
+  small `galleryImage(name, caption, section)` builder — paths point at
+  `/quintessence-images/gallery/{thumbs,full}/<name>.jpg` from Phase 1. Applied the planned
+  caption fix for `finite-element-analysis` ("Finite element analysis of the CLaMP") with a code
+  comment flagging it for owner review.
+- Built `src/components/galleryGrid/GalleryGrid.js` (+`.css`) and
+  `src/components/lightbox/Lightbox.js` (+`.css`) per spec: responsive grid
+  (`repeat(auto-fill, minmax(160px, 1fr))`, 2 cols under 480px), lazy-loaded `<button>` thumbs,
+  keyboard/mouse-driven lightbox with wraparound prev/next across the combined 36-item list,
+  Escape/Arrow key handling, body-scroll lock, and focus management (focuses the dialog on open,
+  restores focus to the invoking thumbnail on close).
+- **Real bug found and fixed during verification:** the lightbox was originally rendered inline
+  in the component tree (inside the page's `<Fade>` wrapper from `react-reveal`). `react-reveal`
+  applies a CSS `transform` during its animation, which creates a new containing block for
+  descendant `position: fixed` elements — so the scrim was positioning itself relative to the
+  `Fade` wrapper's box instead of the viewport, and clicking outside the visible dialog (e.g. near
+  a page corner) didn't hit the scrim and couldn't close it. Fixed by rendering `Lightbox` through
+  `ReactDOM.createPortal(..., document.body)`, which escapes the transformed ancestor. This only
+  surfaces once the component is mounted inside the real page tree — worth remembering for Phase 3
+  if any other fixed-position UI gets added inside `<Fade>`.
+- **Toolchain note:** this project's CRA/eslint setup (`react-scripts 3.2.0`) rejects optional
+  chaining (`?.`) as a lint error (`no-unused-expressions`) even though the Babel preset transpiles
+  it — avoid `?.` in this codebase; use an explicit `if` guard instead.
+- No new npm dependencies were added — `ReactDOM.createPortal` is part of the existing `react-dom`
+  dependency, and icons use the site's existing bundled Font Awesome classes (`fas fa-times`,
+  `fa-chevron-left`, `fa-chevron-right`) rather than a new icon package.
+- Verified end-to-end with a temporary wiring into `QuintessenceContent.js` (reverted after
+  testing — that wiring is Phase 3's job) driven by Playwright against the real dev server:
+  36 thumbnails render across both sections, lightbox opens/closes via click/scrim-click/Escape,
+  prev/next work via both buttons and arrow keys with wraparound, `document.body.style.overflow`
+  locks to `hidden` while open and restores on close, and a 375px-viewport pass showed no
+  horizontal overflow and correct full-screen scrim coverage (confirmed by sampling rendered
+  pixel values, not just visual screenshot inspection — screenshots of very dark UI can look
+  misleadingly "readable" to eyes/vision models due to image upscaling contrast effects). Only
+  pre-existing console warnings were `react-reveal`'s legacy-context/`UNSAFE_componentWillMount`
+  warnings, unrelated to this change. `npm run build` is clean (zero new warnings).
 
 ---
 
 ## Phase 3 — Wire into the Quintessence page, verify, deploy
-**Prereqs:** Phase 2 DONE · **Status:** TODO
+**Prereqs:** Phase 2 DONE · **Status:** DONE (pending deploy approval)
 
-- [ ] Render the gallery in `QuintessenceContent.js`: a "Gallery" `<h2>` + `<GalleryGrid …/>`
+- [x] Render the gallery in `QuintessenceContent.js`: a "Gallery" `<h2>` + `<GalleryGrid …/>`
       between the existing body text (after the contact line) and the "← Back to Technical" link.
       Pass `theme` through like the rest of the page. Widen only the gallery block if the 800px
       column feels cramped (e.g. gallery wrapper `max-width: 1000px`) — don't restyle the
       existing prose column.
-- [ ] Responsive pass at 375px and 1280px: no horizontal overflow, thumbs readable on mobile,
+- [x] Responsive pass at 375px and 1280px: no horizontal overflow, thumbs readable on mobile,
       lightbox controls reachable/tappable on mobile.
-- [ ] `npm run build` clean (zero warnings — the build is currently warning-free; keep it that way).
-- [ ] Serve the production build (`serve -s build`), verify `/quintessence` end-to-end: thumbs
+- [x] `npm run build` clean (zero warnings — the build is currently warning-free; keep it that way).
+- [x] Serve the production build (`serve -s build`), verify `/quintessence` end-to-end: thumbs
       load lazily (check Network tab), a few full-size images open in the lightbox, keyboard nav
       works, spot-check 200s on e.g. `/quintessence-images/gallery/thumbs/nbl.jpg` and
       `/quintessence-images/gallery/full/nbl.jpg`.
@@ -155,8 +218,41 @@ scroll behind it; no console errors.
 **Acceptance check:** Live (or locally-served production) `/quintessence` shows the two-section
 gallery; lightbox fully functional with mouse + keyboard; build clean; no console errors; page
 weight on initial load not blown up (lazy thumbs, full images fetched only on lightbox open).
+✅ Verified locally against the production build — see Handoff notes. Live smoke-test still
+pending owner approval to deploy.
 
-**Handoff notes:** _(fill in)_
+**Handoff notes:**
+
+- **JSX structure:** split the page into two sibling blocks inside the existing `<Fade>`:
+  `.quintessence-main` (unchanged — header image, title, team image, body text) and a new
+  `.quintessence-gallery-section` containing the `<h2>Gallery</h2>`, `<GalleryGrid>`, and the
+  "← Back to Technical" link (moved out of `.quintessence-main`, unchanged visually/behaviorally).
+  This was necessary because `.quintessence-main` caps at `max-width: 800px`, which would have
+  clipped the gallery's own `max-width: 1000px` wrapper — splitting the container was the only way
+  to widen the gallery without touching the prose column's styling, per the locked constraint.
+- **New CSS** in `QuintessenceContent.css`: `.quintessence-gallery-section` (`width: 90%,
+  max-width: 1000px, margin: 0 auto`, centered like `.quintessence-main`) and
+  `.quintessence-gallery-title` (left-aligned `<h2>`, 28px → 22px under 768px, matching the
+  existing responsive breakpoint already used for the title/body/header-image rules).
+- **Verified via Playwright against the production build** (`npm run build` + `serve -s build`,
+  scripted in scratchpad, not committed):
+  - Desktop (1280px): no horizontal overflow, `.quintessence-gallery-section` measured 980px wide
+    vs. `.quintessence-main`'s 800px — confirms the gallery widens independently as intended.
+    5-column grid renders correctly with both section headings and all 36 thumbnails.
+  - Mobile (375px): no horizontal overflow, 2-column grid, lightbox nav/close buttons all measured
+    within the 375px viewport (tappable), scrim-tap-to-close and next-button both worked.
+  - Lazy loading confirmed structurally (`loading="lazy"` on all 36 `<img>`s) and via network
+    monitoring: only **1** request to `/gallery/full/` fired after opening exactly one lightbox
+    image (i.e., full-size images aren't prefetched).
+  - Lightbox keyboard nav (`ArrowRight`/`ArrowLeft`) verified via the counter text ("1/36" →
+    "2/36" → "1/36" with wraparound), `Escape` closes and restores `document.body.style.overflow`
+    (`"hidden"` while open → `""` after close).
+  - Spot-checked `/quintessence-images/gallery/{thumbs,full}/nbl.jpg` — both return 200.
+  - Zero console errors/warnings on either viewport.
+- `npm run build` output: **Compiled successfully**, zero new warnings (only the pre-existing
+  Node/browserslist deprecation notices unrelated to the app code).
+- Not yet done: committing this work and the owner-approval deploy step. Live-site smoke test
+  (`https://www.nashirj.com/quintessence`) is blocked on that approval.
 
 ---
 
