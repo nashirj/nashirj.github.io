@@ -7,6 +7,7 @@ import {
   sinkeaterLink,
   transcriptions,
   septessenceInfo,
+  redShiftInfo,
 } from "../../portfolio";
 
 function VideoEmbed({ title, composer, venue, embedId }) {
@@ -28,6 +29,20 @@ function VideoEmbed({ title, composer, venue, embedId }) {
           allowFullScreen
         />
       </div>
+    </div>
+  );
+}
+
+function SpotifyEmbed({ albumId, albumTitle }) {
+  return (
+    <div className="music-spotify-container">
+      <iframe
+        src={`https://open.spotify.com/embed/album/${albumId}`}
+        title={albumTitle}
+        height="352"
+        allow="encrypted-media; clipboard-write; fullscreen; picture-in-picture"
+        loading="lazy"
+      />
     </div>
   );
 }
@@ -159,6 +174,22 @@ export default function MusicContent(props) {
             className="music-poster-image"
             src={septessenceInfo.pastPerformance.poster}
             alt={septessenceInfo.pastPerformance.posterAlt}
+          />
+        </section>
+
+        <section className="music-section" id="redshift">
+          <h2 style={{ color: theme.text }}>Red Shift</h2>
+          <p>
+            Red Shift is a group of friends who met while playing music at
+            UCF.
+          </p>
+
+          <MembersList members={redShiftInfo.members} />
+
+          <h3 style={{ color: theme.text }}>Album</h3>
+          <SpotifyEmbed
+            albumId={redShiftInfo.recordings.spotifyAlbumId}
+            albumTitle={redShiftInfo.recordings.albumTitle}
           />
         </section>
       </div>

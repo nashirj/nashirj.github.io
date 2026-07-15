@@ -352,7 +352,6 @@ const transcriptions = [
 ];
 
 const septessenceInfo = {
-  bookingEmail: "nashirbass@gmail.com",
   videos: [
     {
       title: "Fre(e)d",
@@ -379,8 +378,8 @@ const septessenceInfo = {
     { name: "Joshua Mercado", role: "trumpet", ig: "https://www.instagram.com/josh.m_music/" },
     { name: "Quint Johnson", role: "alto/soprano sax", ig: "https://www.instagram.com/qj_music/" },
     { name: "Fortunato Occhino", role: "tenor sax", ig: "https://www.instagram.com/fro.music/" },
-    { name: "Noah Charles III", role: "guitar" },
-    { name: "Richard Drexler", role: "piano" },
+    { name: "Noah Charles", role: "guitar", ig: "https://www.instagram.com/noahjcharles_/" },
+    { name: "Richard Drexler", role: "piano", ig: "https://www.facebook.com/richard.drexler/" },
     { name: "Nashir Janmohamed", role: "bass, bandleader" },
     { name: "James Fortune", role: "drums", ig: "https://www.instagram.com/_jamesfortune_/" },
   ],
@@ -390,6 +389,24 @@ const septessenceInfo = {
     link: "https://bluebambooartcenter.com/event/5165182/644015419/septessence",
     poster: "/pictures/septessence-poster-1.png",
     posterAlt: "Septessence performance poster, July 26, 2023",
+  },
+};
+
+const redShiftInfo = {
+  videos: [
+  ],
+  members: [
+    { name: "Joshua Mercado", role: "trumpet/keys", ig: "https://www.instagram.com/josh.m_music/" },
+    { name: "Santiago Parra-Romero", role: "tenor sax/piano", ig: "https://www.instagram.com/sprjazz/" },
+    { name: "Daniel Bonnet", role: "alto sax", ig: "https://www.instagram.com/danielalejandrobonnet/" },
+    { name: "Diego Rivera", role: "drums", ig: "https://www.instagram.com/bakudandrums/" },
+    { name: "Nashir Janmohamed", role: "bass" },
+  ],
+  pastPerformance: {
+  },
+  recordings: {
+    spotifyAlbumId: "3PGAjU5kxDtXkI3YVvmCDu",
+    albumTitle: "Red Shift",
   },
 };
 
@@ -458,6 +475,7 @@ export {
   sinkeaterLink,
   transcriptions,
   septessenceInfo,
+  redShiftInfo,
   socialMediaLinks,
   contactPageData,
 };
