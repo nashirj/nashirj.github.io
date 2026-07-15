@@ -20,7 +20,7 @@ const seo = {
 //Home Page
 const greeting = {
   title: "Nashir Janmohamed",
-  logo_name: "nashirj",
+  logo_name: "nj",
   subTitle:
     "Brooklyn-based software engineer, musician, composer, climber, and enjoyer of (most) things.",
   githubProfile: "https://github.com/nashirj",
