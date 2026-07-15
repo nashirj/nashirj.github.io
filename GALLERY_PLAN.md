@@ -50,7 +50,7 @@
 
 - [x] **Phase 1** — Generate optimized gallery images · status: **DONE**
 - [x] **Phase 2** — Gallery grid + lightbox components · status: **DONE**
-- [x] **Phase 3** — Wire into Quintessence page, polish, verify, deploy · status: **DONE (pending deploy approval)**
+- [x] **Phase 3** — Wire into Quintessence page, polish, verify, deploy · status: **DONE**
 
 ---
 
@@ -196,7 +196,7 @@ scroll behind it; no console errors. ✅ Verified — see Handoff notes.
 ---
 
 ## Phase 3 — Wire into the Quintessence page, verify, deploy
-**Prereqs:** Phase 2 DONE · **Status:** DONE (pending deploy approval)
+**Prereqs:** Phase 2 DONE · **Status:** DONE
 
 - [x] Render the gallery in `QuintessenceContent.js`: a "Gallery" `<h2>` + `<GalleryGrid …/>`
       between the existing body text (after the contact line) and the "← Back to Technical" link.
@@ -210,16 +210,16 @@ scroll behind it; no console errors. ✅ Verified — see Handoff notes.
       load lazily (check Network tab), a few full-size images open in the lightbox, keyboard nav
       works, spot-check 200s on e.g. `/quintessence-images/gallery/thumbs/nbl.jpg` and
       `/quintessence-images/gallery/full/nbl.jpg`.
-- [ ] Commit; then **ask the owner before deploying** (`npm run deploy` from `nashirj/` publishes
+- [x] Commit; then **ask the owner before deploying** (`npm run deploy` from `nashirj/` publishes
       to the live site).
-- [ ] After deploy (if approved): smoke-test `https://www.nashirj.com/quintessence` — gallery
+- [x] After deploy (if approved): smoke-test `https://www.nashirj.com/quintessence` — gallery
       renders, one thumb and one full image return 200, lightbox works.
 
 **Acceptance check:** Live (or locally-served production) `/quintessence` shows the two-section
 gallery; lightbox fully functional with mouse + keyboard; build clean; no console errors; page
 weight on initial load not blown up (lazy thumbs, full images fetched only on lightbox open).
-✅ Verified locally against the production build — see Handoff notes. Live smoke-test still
-pending owner approval to deploy.
+✅ Verified both locally against the production build and live on
+`https://www.nashirj.com/quintessence` post-deploy — see Handoff notes.
 
 **Handoff notes:**
 
@@ -251,8 +251,18 @@ pending owner approval to deploy.
   - Zero console errors/warnings on either viewport.
 - `npm run build` output: **Compiled successfully**, zero new warnings (only the pre-existing
   Node/browserslist deprecation notices unrelated to the app code).
-- Not yet done: committing this work and the owner-approval deploy step. Live-site smoke test
-  (`https://www.nashirj.com/quintessence`) is blocked on that approval.
+- Committed as `8a2f652` ("Add photo gallery to Quintessence page"), bundling Phases 1–3 together
+  since none of the prior phases had been committed yet.
+- **Deployed** via `npm run deploy` (owner-approved) → published to `gh-pages` branch
+  (`124cd15`). Live smoke test via Playwright against `https://www.nashirj.com/quintessence`:
+  page loads, all 36 thumbnails render, lightbox opens and serves the full-size image (200), and
+  `quintessence-images/gallery/{thumbs,full}/nbl.jpg` both return 200 (after a short GitHub
+  Pages CDN propagation delay — thumbs/full were briefly 404 for ~1-2 min right after deploy,
+  self-resolved). One transient 404 appears in the browser console for the initial
+  `/quintessence` navigation itself — this is GitHub Pages' standard SPA-fallback behavior
+  (direct navigation to a client-side route 404s momentarily before `404.html`'s redirect script
+  rewrites to the app), confirmed pre-existing by testing `/technical` the same way; not a
+  regression from this change.
 
 ---
 
