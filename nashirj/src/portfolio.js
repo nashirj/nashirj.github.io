@@ -9,7 +9,7 @@ const settings = {
 const seo = {
   title: "Nashir's Portfolio",
   description:
-    "Brooklyn-based software engineer, jazz bassist, composer, climber, and enjoyer of (most) things.",
+    "Brooklyn-based software engineer, musician, composer, climber, and enjoyer of (most) things.",
   og: {
     title: "Nashir Janmohamed Portfolio",
     type: "website",
@@ -22,7 +22,7 @@ const greeting = {
   title: "Nashir Janmohamed",
   logo_name: "nashirj",
   subTitle:
-    "Brooklyn-based software engineer, jazz bassist, composer, climber, and enjoyer of (most) things.",
+    "Brooklyn-based software engineer, musician, composer, climber, and enjoyer of (most) things.",
   githubProfile: "https://github.com/nashirj",
 };
 
@@ -68,12 +68,6 @@ const technicalProjects = [
     imageAlt: "Ridesio app screenshot",
   },
   {
-    id: "discretemath",
-    title: "discretemath",
-    image: "/pictures/dmgui.png",
-    imageAlt: "discretemath GUI",
-  },
-  {
     id: "smc-robotics",
     title: "Santa Monica College Robotics Club",
     image: "/pictures/robots.jpg",
@@ -88,19 +82,12 @@ const technicalProjects = [
     id: "vulcanet",
     title: "Vulcanet (SD Hacks 2019)",
   },
-  {
-    id: "rust-rsa",
-    title: "Rust RSA",
-  },
 ];
 
 const technicalLinks = {
   ridesio: "https://www.ridesio.com/",
   ridesioAward:
     "https://blog.codepath.org/2020-codepath-org-fall-semester-demo-day-ios-winners-announced/?utm_content=149195058&utm_medium=social&utm_source=linkedin&hss_channel=lcp-18305024",
-  discretemathRepo: "https://github.com/nashirj/discrete-math-algorithms",
-  discretemathNotebook:
-    "https://github.com/nashirj/discrete-math-algorithms/blob/master/demo.ipynb",
   smcRoboticsTeam: "https://smcrobotics.github.io",
   smcRoboticsScript:
     "https://github.com/nashirj/create-vex-controller-documentation",
@@ -109,9 +96,6 @@ const technicalLinks = {
   coronavirusValves:
     "https://www.theverge.com/2020/3/17/21184308/coronavirus-italy-medical-3d-print-valves-treatments",
   vulcanet: "https://devpost.com/software/vulcanet-wildfire-detection-network",
-  rustRsa: "https://github.com/DarthGeek01/Rust-RSA",
-  rsaWiki: "https://en.wikipedia.org/wiki/RSA_(cryptosystem)#Operation",
-  chiSquared: "https://en.wikipedia.org/wiki/Chi-squared_test",
   otherProjects: "https://github.com/nashirj",
 };
 
@@ -217,25 +201,6 @@ const outdoors = {
 };
 
 // Music Page
-const musicGroups = [
-  {
-    id: "septessence",
-    name: "Septessence",
-    subtitle: "an Orlando, FL–based jazz septet",
-  },
-  {
-    id: "impulse-trio",
-    name: "The Impulse Trio",
-    subtitle: "an Orlando, FL–based jazz trio",
-  },
-  {
-    id: "madi",
-    name: "Madi and the razz",
-    subtitle: "a pop/funk group",
-    link: "https://www.instagram.com/madiandtherazz/",
-  },
-];
-
 const musicPerformances = [
   {
     title: "Fuji",
@@ -428,42 +393,6 @@ const septessenceInfo = {
   },
 };
 
-const impulseTrioInfo = {
-  bookingEmail: "nashirbass@gmail.com",
-  recordings: [
-    {
-      title: "State of the Union",
-      composer: "Fly Trio",
-      audio: "/audio/impulse-state-of-the-union.mp3",
-    },
-    {
-      title: "I Hear a Rhapsody",
-      composer: "George Fragos, Jack Baker, and Dick Gasparre",
-      audio: "/audio/impulse-I-hear-a-rhapsody.mp3",
-    },
-    {
-      title: "Stella by Starlight",
-      composer: "Victor Young",
-      audio: "/audio/impulse-stella.mp3",
-    },
-    {
-      title: "Red Cross",
-      composer: "Charlie Parker",
-      audio: "/audio/impulse-red-cross.mp3",
-    },
-    {
-      title: "Wayne's Thang",
-      composer: "Kenny Garrett",
-      audio: "/audio/impulse-waynes-thang.mp3",
-    },
-  ],
-  members: [
-    { name: "Noah Charles III", role: "guitar" },
-    { name: "Nashir Janmohamed", role: "bass" },
-    { name: "James Fortune", role: "drums", ig: "https://www.instagram.com/_jamesfortune_/" },
-  ],
-};
-
 const socialMediaLinks = [
   {
     name: "Github",
@@ -524,13 +453,11 @@ export {
   quintessence,
   quintessenceGallery,
   outdoors,
-  musicGroups,
   musicPerformances,
   recordings,
   sinkeaterLink,
   transcriptions,
   septessenceInfo,
-  impulseTrioInfo,
   socialMediaLinks,
   contactPageData,
 };

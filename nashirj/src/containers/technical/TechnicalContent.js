@@ -29,30 +29,6 @@ const projectDescriptions = {
       .
     </p>
   ),
-  discretemath: (
-    <p>
-      This is a{" "}
-      <a
-        href={technicalLinks.discretemathRepo}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Python library
-      </a>{" "}
-      that implements various algorithms and processes from discrete math. I
-      also made a GUI to facilitate ease of user interaction. The repository
-      also has a{" "}
-      <a
-        href={technicalLinks.discretemathNotebook}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Jupyter notebook
-      </a>{" "}
-      that demonstrates sample usage of the toolbox and how to access the
-      documentation provided within the module.
-    </p>
-  ),
   "smc-robotics": (
     <p>
       I spent a lot of my free time in the 2019-2020 academic year working on
@@ -127,37 +103,6 @@ const projectDescriptions = {
       prediction results in a cross platform smartphone app using Flutter.
     </p>
   ),
-  "rust-rsa": (
-    <p>
-      Ariel Young and I worked together to{" "}
-      <a
-        href={technicalLinks.rustRsa}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        implement the RSA encryption algorithm in Rust
-      </a>
-      . We built a random number generator to generate extremely large
-      numbers (1024 bit), then used the Miller Rabin primality test to sieve
-      these numbers for primes to be used for the public/private keys.
-      Implementing the algorithm was relatively straightforward, as there
-      are{" "}
-      <a href={technicalLinks.rsaWiki} target="_blank" rel="noopener noreferrer">
-        many resources
-      </a>{" "}
-      from which to understand the theory. We analyzed the "true randomness"
-      of our random number generator using the{" "}
-      <a
-        href={technicalLinks.chiSquared}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Chi-squared test
-      </a>
-      , and by creating a bitmap visualization of a sequence of randomly
-      generated numbers.
-    </p>
-  ),
 };
 
 export default function TechnicalContent(props) {
@@ -169,6 +114,12 @@ export default function TechnicalContent(props) {
         <h1 className="technical-title" style={{ color: theme.text }}>
           Technical
         </h1>
+
+        <p>
+          For the past couple years since I started working full time, I
+          haven't worked much on personal projects. Below are some things
+          I worked on in the past!
+        </p>
 
         <section className="technical-section">
           <h2 style={{ color: theme.text }}>Projects</h2>

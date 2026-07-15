@@ -2,13 +2,11 @@ import React from "react";
 import "./MusicContent.css";
 import { Fade } from "react-reveal";
 import {
-  musicGroups,
   musicPerformances,
   recordings,
   sinkeaterLink,
   transcriptions,
   septessenceInfo,
-  impulseTrioInfo,
 } from "../../portfolio";
 
 function VideoEmbed({ title, composer, venue, embedId }) {
@@ -79,30 +77,6 @@ export default function MusicContent(props) {
         </h1>
 
         <section className="music-section">
-          <h2 style={{ color: theme.text }}>Groups</h2>
-          <p>
-            During my time in Orlando studying at UCF, I played in a few
-            groups:
-          </p>
-          <ul>
-            {musicGroups.map((group) =>
-              group.link ? (
-                <li key={group.id}>
-                  <a href={group.link} target="_blank" rel="noopener noreferrer">
-                    {group.name}
-                  </a>
-                  , {group.subtitle}.
-                </li>
-              ) : (
-                <li key={group.id}>
-                  <a href={`#${group.id}`}>{group.name}</a>, {group.subtitle}.
-                </li>
-              )
-            )}
-          </ul>
-        </section>
-
-        <section className="music-section">
           <h2 style={{ color: theme.text }}>Performances</h2>
           <div className="music-video-grid">
             {musicPerformances.map((perf) => (
@@ -156,8 +130,12 @@ export default function MusicContent(props) {
             based in Orlando, FL. The band formed with fellow musicians from
             the UCF jazz program, and played a mix of original compositions
             by members of the band as well as arrangements of jazz standards
-            and tunes from the jazz repertoire.
+            and tunes from the jazz repertoire. The group was only together
+            for one summer (2023), but played a lot of interesting music in that
+            short time. :)
           </p>
+
+          <MembersList members={septessenceInfo.members} />
 
           <h3 style={{ color: theme.text }}>Videos</h3>
           <div className="music-video-grid">
@@ -165,19 +143,6 @@ export default function MusicContent(props) {
               <VideoEmbed key={video.title} {...video} />
             ))}
           </div>
-
-          <h3 style={{ color: theme.text }}>Members</h3>
-          <MembersList members={septessenceInfo.members} />
-
-          <h3 style={{ color: theme.text }}>Booking</h3>
-          <p>
-            To book Septessence to play at your venue or event, contact
-            Nashir Janmohamed at{" "}
-            <a href={`mailto:${septessenceInfo.bookingEmail}`}>
-              {septessenceInfo.bookingEmail}
-            </a>
-            .
-          </p>
 
           <h3 style={{ color: theme.text }}>Past performance</h3>
           <p>
@@ -195,34 +160,6 @@ export default function MusicContent(props) {
             src={septessenceInfo.pastPerformance.poster}
             alt={septessenceInfo.pastPerformance.posterAlt}
           />
-        </section>
-
-        <section className="music-section" id="impulse-trio">
-          <h2 style={{ color: theme.text }}>The Impulse Trio</h2>
-          <p>
-            The Impulse Trio was a jazz trio based in Orlando, FL, whose
-            members met while studying jazz at UCF. The trio played a mix of
-            original compositions by members of the band as well as
-            arrangements of jazz standards.
-          </p>
-
-          <h3 style={{ color: theme.text }}>Recordings</h3>
-          {impulseTrioInfo.recordings.map((rec) => (
-            <RecordingRow key={rec.title} {...rec} />
-          ))}
-
-          <h3 style={{ color: theme.text }}>Members</h3>
-          <MembersList members={impulseTrioInfo.members} />
-
-          <h3 style={{ color: theme.text }}>Booking</h3>
-          <p>
-            To book The Impulse Trio to play at your venue or event, contact
-            Nashir at{" "}
-            <a href={`mailto:${impulseTrioInfo.bookingEmail}`}>
-              {impulseTrioInfo.bookingEmail}
-            </a>
-            .
-          </p>
         </section>
       </div>
     </Fade>

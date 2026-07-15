@@ -49,7 +49,7 @@ export default function Bio(props) {
               to them, and particularly enjoy doing so with code.
             </p>
             <p>
-              During my time at UCF, I was a four-time NASA intern (three at{" "}
+              During my time at UCF, I was a seven-time NASA intern (six at{" "}
               <a href={links.ksc} target="_blank" rel="noopener noreferrer">
                 KSC
               </a>{" "}
@@ -61,8 +61,8 @@ export default function Bio(props) {
               software for the Artemis program, to research in flexible
               aerospace structures and robotic excavation, to machine learning
               data pipelines for spacecraft observation. I was also a
-              two-time Google intern, working on video search/ranking quality
-              (2021, remote) and a Geo data microservice (2022, NYC).
+              two-time Google intern: my first internship was in video search/ranking
+              quality and the second was on a Geo data team.
             </p>
             <p>
               While at UCF, I was involved with{" "}
@@ -77,7 +77,7 @@ export default function Bio(props) {
               >
                 Dr. Sukthankar
               </a>
-              , and worked on two extracurricular projects: a{" "}
+              , and worked on building a{" "}
               <a
                 href={links.chessAutomaton}
                 target="_blank"
@@ -85,7 +85,7 @@ export default function Bio(props) {
               >
                 chess-playing automaton powered by a custom chess AI
               </a>
-              , and a robot that plays drums.
+              in my free time.
             </p>
             <p>
               I now live in Brooklyn, NY, but am a native of Los Angeles, CA.
