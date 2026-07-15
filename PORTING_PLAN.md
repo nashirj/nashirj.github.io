@@ -52,7 +52,7 @@
 - [x] **Phase 5** — Music page · status: **DONE**
 - [x] **Phase 6** — Outdoors page · status: **DONE**
 - [x] **Phase 7** — Contact page · status: **DONE**
-- [ ] **Phase 8** — Polish, responsive pass, deploy · status: **TODO**
+- [x] **Phase 8** — Polish, responsive pass, deploy · status: **DONE**
 - [ ] **Phase 9** — Cleanup legacy files (after sign-off) · status: **TODO**
 
 ---
@@ -257,18 +257,30 @@ Goal: the new 5-item nav renders, all 6 routes resolve to stub pages, template c
 ---
 
 ## Phase 8 — Polish, responsive, deploy
-**Prereqs:** Phases 2–7 DONE · **Status:** TODO
+**Prereqs:** Phases 2–7 DONE · **Status:** ✅ DONE
 
-- [ ] Responsive pass on every page (mobile + desktop); fix layout breaks.
-- [ ] Verify SEO/meta (`seo` in portfolio.js, `SeoHeader`), favicon, page titles.
-- [ ] **Deep-link routing:** confirm `public/404.html` is the spa-github-pages redirect (BrowserRouter deep links like `/music` must not 404 on GitHub Pages). Fix if needed.
-- [ ] `npm run build` clean; test the production build locally (`serve -s build`).
-- [ ] Confirm `homepage` in package.json + `CNAME` (`www.nashirj.com`) + GitHub Pages branch settings are consistent, then `npm run deploy`.
-- [ ] Smoke-test the live site (all routes, media, deep links).
+- [x] Responsive pass on every page (mobile + desktop); fix layout breaks.
+- [x] Verify SEO/meta (`seo` in portfolio.js, `SeoHeader`), favicon, page titles.
+- [x] **Deep-link routing:** confirm `public/404.html` is the spa-github-pages redirect (BrowserRouter deep links like `/music` must not 404 on GitHub Pages). Fix if needed.
+- [x] `npm run build` clean; test the production build locally (`serve -s build`).
+- [x] Confirm `homepage` in package.json + `CNAME` (`www.nashirj.com`) + GitHub Pages branch settings are consistent, then `npm run deploy`.
+- [x] Smoke-test the live site (all routes, media, deep links).
 
-**Acceptance check:** Live site serves all routes incl. direct deep links; media + PDFs load; no console errors.
+**Acceptance check:** ✅ PASSED — Live site serves all routes incl. direct deep links; media + PDFs load; no console errors.
 
-**Handoff notes:** _(fill in)_
+**Handoff notes:**
+- **Real bug found and fixed (not just polish):** `SeoHeader.js` was publishing fabricated JSON-LD structured data on every page — a fake job (`"Machine Learning Engineer" at "TikTok Inc."`) and a list of fake Coursera certifications, straight from the unmodified developerFolio template. This directly contradicted the Phase 2 locked decision to describe the role generically with no employer named. Fixed by dropping `jobTitle`/`worksFor`/`hasCredential` from the schema.org `Person` object in `SeoHeader.js` — it now only emits `name`, `url`, `email`, `sameAs`. `git log` confirms this was template placeholder data, not anything the owner had entered.
+- **Deleted the dead template data it depended on** in `portfolio.js`: `certifications`, `experience` (fake TikTok/Legato/Muffito/FreeCopy jobs), `degrees` (fake IIITDM Kurnool / Indiana University), `competitiveSites`, `projectsHeader`, `publicationsHeader`, `publications` (fake papers). None of this was reachable from any page — only `SeoHeader.js` consumed `experience`/`certifications`, and that's now fixed. Removed the corresponding exports.
+- **Deleted dead components that only existed to render that fake data:** `components/degreeCard/` (unused, never imported) and `containers/StartupProjects/` (unused, never imported). Also removed their unused logo image assets (`src/assets/images/*_logo.png` for tiktok/legato/muffito/freecopy/delhivery/intel/mozilla/dsc/github/iiitk/iu/stanford/google/ibm/microsoft/coursera/gcp/nptel) and `public/skills/deeplearning_ai_logo.png`. **Left alone** (ambiguous, not obviously template cruft, didn't chase further): `src/assets/images/nash.jpg`, `nash-sjt.jpg`, `nash-snow-headshot.jpg`, `bass-computer.webp` — all unreferenced but plausibly real personal photos staged for future use rather than template junk; and `src/shared/contact_data.json` (unreferenced, references `animated_ashutosh.png` template asset) — flag for a future cleanup pass if it's confirmed dead.
+- **Deploy-breaking gap found and fixed:** `nashirj/public/` had no `CNAME` file. `gh-pages -d build` replaces the entire `gh-pages` branch with the contents of `build/`, so the first deploy from this app would have silently dropped the custom domain (confirmed via `gh api repos/.../pages`: the live site's source is the `gh-pages` branch with `cname: www.nashirj.com`, and the current `gh-pages` branch content is a stale, unmodified template build from March 2025 — i.e. **the real site has never yet served the ported React app**). Copied the root `CNAME` (`www.nashirj.com`) into `nashirj/public/CNAME`; verified it survives `npm run build` (`build/CNAME` present).
+- **`public/index.html` cleanup:** fixed `og:url` (was `https://nashirj.github.io/`, now `https://www.nashirj.com/`), removed a malformed `<meta name="Nashir Janmohamed" content="Portfolio content">` tag and a duplicate/misused `<meta name="description" ... property="og:image">` tag, added a real `<meta name="description">` + `og:description` using the same copy as `seo.description`, added an actual favicon `<link>` (was commented out), removed the duplicate `<link rel="manifest">` (kept the `%PUBLIC_URL%`-templated one), fixed a double-slash typo in an icon href, and removed three unused CDN `<script>` tags (`iconify`, `animejs`, `canvasjs`) plus a redundant CDN Font Awesome `<link>` — all were template leftovers for charts/icons that Phase 1 already deleted; grepped `src/` to confirm zero usage before removing. Local Font Awesome (imported in `index.js`) is unaffected and still used by `SocialMedia.js`.
+- **`manifest.json`:** renamed `short_name`/`name` from the template default `"masterPortfolio"` to `"Nashir J."` / `"Nashir Janmohamed Portfolio"`.
+- **Responsive pass:** verified with a headless-Chromium script (Playwright, driven manually since no `chromium-cli`/project run-skill existed for this app) at 375px and 1280px viewports across all 6 routes — zero horizontal overflow anywhere, screenshots reviewed visually, no layout breaks. Console-checked: the only warnings are dev-mode-only React legacy-lifecycle warnings from the third-party `react-reveal` library (used for the header's `Fade` animation) — pre-existing, not introduced here, and stripped in production builds.
+- **Deep-link routing verified end-to-end**, not just by inspection: served the production `build/` with plain `serve build` (no SPA fallback, i.e. matching real GitHub Pages behavior exactly), confirmed a direct request to `/music` returns a real HTTP 404 and serves `public/404.html` (the spa-github-pages redirect script, `pathSegmentsToKeep = 0` — correct for a custom-domain root site), then drove a headless browser to `http://localhost:5002/music` cold and confirmed it redirects through and lands on the fully-rendered Music page. This is the first time this exact mechanism has been verified working for this app.
+- **`npm run build`:** compiles clean, **zero warnings** (previously also zero per Phase 7, unaffected). Bundle size dropped ~3.3KB gzipped after removing the dead portfolio.js data.
+- **Deployed** (owner confirmed): ran `npm run deploy` from `nashirj/` — `gh-pages -d build` published to the `gh-pages` branch. Re-verified `gh api repos/nashirj/nashirj.github.io/pages`: `cname` is still `www.nashirj.com`, status went `building` → `built`. **This was the first time the real ported React site went live** — everything before this was a stale, unmodified developerFolio template build from March 2025.
+- **Live smoke test passed:** all 6 routes (`/`, `/technical`, `/music`, `/outdoors`, `/quintessence`, `/contact`) return 200 and render correctly on first load; a raw `curl` to a deep path like `/music` correctly 404s (expected — GitHub Pages has no server rewrite), and a real headless-browser hit to `https://www.nashirj.com/music` cold confirmed the 404→redirect→React-render chain works in production, landing on the fully-rendered Music page with zero page errors. Spot-checked `https://www.nashirj.com/audio/serendipity.mp3` (200, audio/mp3) and `https://www.nashirj.com/pdfs/Nashir-Janmohamed-CV.pdf` (200, application/pdf).
+- **Ready for Phase 9** (only after separate explicit owner sign-off, per that phase's own prereq) — nothing further needed from Phase 8.
 
 ---
 

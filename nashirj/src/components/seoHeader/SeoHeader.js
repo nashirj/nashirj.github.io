@@ -1,12 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import {
-  greeting,
-  seo,
-  socialMediaLinks,
-  experience,
-  certifications,
-} from "../../portfolio.js";
+import { greeting, seo, socialMediaLinks } from "../../portfolio.js";
 
 function SeoHeader() {
   let sameAs = [];
@@ -22,20 +16,7 @@ function SeoHeader() {
   let mail = socialMediaLinks
     .find((media) => media.link.startsWith("mailto"))
     .link.substring("mailto:".length);
-  let job = experience.sections
-    ?.find((section) => section.work)
-    ?.experiences?.at(0);
 
-  let credentials = [];
-  certifications.certifications.forEach((certification) => {
-    credentials.push({
-      "@context": "https://schema.org",
-      "@type": "EducationalOccupationalCredential",
-      url: certification.certificate_link,
-      name: certification.title,
-      description: certification.subtitle,
-    });
-  });
   const data = {
     "@context": "https://schema.org/",
     "@type": "Person",
@@ -43,12 +24,6 @@ function SeoHeader() {
     url: seo?.og?.url,
     email: mail,
     sameAs: sameAs,
-    jobTitle: job.title,
-    worksFor: {
-      "@type": "Organization",
-      name: job.company,
-    },
-    hasCredential: credentials,
   };
   return (
     <Helmet>
