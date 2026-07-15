@@ -53,7 +53,6 @@
 - [x] **Phase 6** — Outdoors page · status: **DONE**
 - [x] **Phase 7** — Contact page · status: **DONE**
 - [x] **Phase 8** — Polish, responsive pass, deploy · status: **DONE**
-- [ ] **Phase 9** — Cleanup legacy files (after sign-off) · status: **TODO**
 
 ---
 
@@ -280,18 +279,6 @@ Goal: the new 5-item nav renders, all 6 routes resolve to stub pages, template c
 - **`npm run build`:** compiles clean, **zero warnings** (previously also zero per Phase 7, unaffected). Bundle size dropped ~3.3KB gzipped after removing the dead portfolio.js data.
 - **Deployed** (owner confirmed): ran `npm run deploy` from `nashirj/` — `gh-pages -d build` published to the `gh-pages` branch. Re-verified `gh api repos/nashirj/nashirj.github.io/pages`: `cname` is still `www.nashirj.com`, status went `building` → `built`. **This was the first time the real ported React site went live** — everything before this was a stale, unmodified developerFolio template build from March 2025.
 - **Live smoke test passed:** all 6 routes (`/`, `/technical`, `/music`, `/outdoors`, `/quintessence`, `/contact`) return 200 and render correctly on first load; a raw `curl` to a deep path like `/music` correctly 404s (expected — GitHub Pages has no server rewrite), and a real headless-browser hit to `https://www.nashirj.com/music` cold confirmed the 404→redirect→React-render chain works in production, landing on the fully-rendered Music page with zero page errors. Spot-checked `https://www.nashirj.com/audio/serendipity.mp3` (200, audio/mp3) and `https://www.nashirj.com/pdfs/Nashir-Janmohamed-CV.pdf` (200, application/pdf).
-- **Ready for Phase 9** (only after separate explicit owner sign-off, per that phase's own prereq) — nothing further needed from Phase 8.
-
----
-
-## Phase 9 — Cleanup legacy files (ONLY after owner sign-off)
-**Prereqs:** Phase 8 DONE + explicit owner approval · **Status:** TODO
-
-- [ ] Remove legacy root `*.htm` and unused legacy asset dirs now served from `public/` (get explicit confirmation first; these are the reference content).
-- [ ] Update root `README.md`.
-- [ ] Confirm nothing external still links to old `.htm` paths (or add redirects).
-
-**Handoff notes:** _(fill in)_
 
 ---
 
