@@ -838,27 +838,11 @@ const publications = {
 
 // Contact Page
 const contactPageData = {
-  contactSection: {
-    title: "Contact Me",
-    profile_image_path: "nash.png",
-    description:
-      "Feel free to reach out about interesting projects, music, climbing, or whatever else is on your mind! My email is nashirbass@gmail.com",
-  },
-  addressSection: {
-    title: "Address",
-    subtitle: "Melrose Street, Brooklyn, NY, USA",
-    locality: "Brooklyn",
-    country: "USA",
-    region: "New York",
-    postalCode: "11237",
-    streetAddress: "Melrose Street",
-    avatar_image_path: "address_image.svg",
-    location_map_link: "https://maps.app.goo.gl/A2NtgexqcUUFGsNW6",
-  },
-  phoneSection: {
-    title: "",
-    subtitle: "",
-  },
+  title: "Contact",
+  description:
+    "Feel free to reach out about interesting projects, music, climbing, or whatever else is on your mind!",
+  email: "nashirbass@gmail.com",
+  location: "Brooklyn, NY, USA",
 };
 
 export {

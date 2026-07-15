@@ -5,7 +5,7 @@ import Technical from "../pages/technical/Technical";
 import Music from "../pages/music/Music";
 import Outdoors from "../pages/outdoors/Outdoors";
 import Quintessence from "../pages/quintessence/Quintessence";
-import Contact from "../pages/contact/ContactComponent";
+import Contact from "../pages/contact/Contact";
 import Error404 from "../pages/errors/error404/Error";
 
 export default class Main extends Component {
